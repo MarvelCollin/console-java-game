@@ -9,7 +9,6 @@
 		Random r = new Random();
 		private int xRadius = 3;
 		private int yRadius = 3;
-	//	private int xRand, yRand;
 		
 		public Map() {
 			// TODO Auto-generated constructor stub
@@ -30,9 +29,7 @@
 		private boolean inRadiusEmpty(int y, int x) {
 			for(int i = 0; i < yRadius; i++) {
 				for(int j = 0; j < xRadius; j++) {
-	//				System.out.println(y + i - 3);
-	//				System.out.println(x + j - 3);
-					if(!isEmpty(y + i - 3, x + j - 3)) return false;
+					if(!isEmpty(y + i, x + j)) return false;
 				}
 			}
 			
@@ -48,12 +45,10 @@
 		}
 		
 		private void generate(char value) {
-			int xRand = r.nextInt(heightSize);
-			int yRand = r.nextInt(widthSize);
-//			System.out.println(xRand + " " + yRand + " ");
+			int xRand = r.nextInt(heightSize - 8) + 1 ;
+			int yRand = r.nextInt(widthSize - 8) + 1;
 			
 			if(inRadiusEmpty(yRand,xRand)) {
-//				System.out.print("asda");
 				for(int i = 0; i < yRadius; i++) {
 					for(int j = 0; j < xRadius; j++) {
 						if(chanceChar(30)) {
@@ -61,9 +56,6 @@
 						}
 					}
 				}
-//				System.out.println(" Pass");
-			} else {
-//				System.out.println(" Fail");
 			}
 		}
 		
@@ -78,16 +70,11 @@
 				}
 			}
 			
-			for(int i = 0; i < 10; i++) {
+			for(int i = 0; i < 30; i++) {
 				generate('v');
+				generate('O');
+				generate('X');
 			}
-//			for(int i = 0; i < 30; i++) {
-//				generate('O');
-//			}
-//			for(int i = 0; i < 30; i++) {
-//				generate('#');
-//			}
-			System.out.println("Done");
 		}
 		
 		public void printMap() {
