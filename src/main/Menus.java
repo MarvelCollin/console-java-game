@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Menus {
@@ -13,6 +14,11 @@ public class Menus {
 		s.nextLine();
 	}
 	
+	void cls() {
+		for(int i = 0; i < 50; i++) {
+			System.out.println();
+		}
+	}
 	
 	void game() {
 		int choice;
