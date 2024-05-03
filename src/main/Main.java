@@ -11,7 +11,8 @@ public class Main {
 	public Main() {
 //		menu.enter();
 		map.initMap();
-		map.printMap();
+//		map.printMap();
+		map.printCamera(100, 120);
 	}
 
 	public static void main(String[] args) {

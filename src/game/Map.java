@@ -3,8 +3,8 @@
 	import java.util.Random;
 	
 	public class Map {
-		private int widthSize = 301;
-		private int heightSize = 301;
+		private int widthSize = 350;
+		private int heightSize = 350;
 		private char[][] map = new char[heightSize][widthSize];
 		Random r = new Random();
 		private int xRadius = 3;
@@ -89,5 +89,20 @@
 				System.out.println();
 			}
 		}
-	
+		
+		public void printCamera(int y, int x) {
+			int yCamera = 15;
+			int xCamera = 35;
+			
+			for(int i = 0; i <= yCamera; i++) {
+				for(int j = 0; j <= xCamera; j++) {
+					if(i == 0 || i == yCamera || j == 0 || j == xCamera) {
+						System.out.print("#");
+					} else {
+						System.out.print(map[y + i][x + j]);
+					}
+				}
+				System.out.println();
+			}
+		}
 	}
