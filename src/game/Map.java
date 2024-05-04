@@ -1,6 +1,8 @@
 		package game;
 	
 	import java.util.Random;
+
+import scene.Battle;
 	
 	public class Map {
 		private int widthSize = 350;
@@ -10,11 +12,26 @@
 		private int xRadius = 3;
 		private int yRadius = 3;
 		private int xBorder = 6, yBorder = 6;
-		Scene scene = new Scene();
+		Battle battle = new Battle();
+		private int yCamera = 15;
+		private int xCamera = 35;
 		
+		public int getYCamera() {
+			return yCamera;
+		}
+
+		public int getXCamera() {
+			return xCamera;
+		}
 		
 		public Map() {
 			// TODO Auto-generated constructor stub
+		}
+		
+		public boolean isPreMoveEmpty(int y, int x) {
+			if(map[y][x] == ' ') return true;
+		
+			return false;
 		}
 		
 		public boolean isEmpty(int y, int x) {
@@ -55,12 +72,8 @@
 		}
 		
 		private void generate(char value) {
-			int xRand = r.nextInt(heightSize) ;
-			int yRand = r.nextInt(widthSize);
-			if(xRand < 10) xRand += r.nextInt(10); 
-			if(yRand < 10) yRand += r.nextInt(10);  
-			if(xRand > heightSize - 10) xRand += heightSize - 10; 
-			if(yRand > widthSize - 10) yRand += widthSize - 10; 
+			int xRand = r.nextInt(heightSize - 20) + 10;
+			int yRand = r.nextInt(widthSize - 20) + 10;
 			
 			boolean bigGrass = false;
 			
@@ -101,7 +114,7 @@
 				}
 			}
 			
-			for(int i = 0; i < 300; i++) {
+			for(int i = 0; i < 350; i++) {
 				generate('v');
 				generate('O');
 				generate('#');
@@ -122,9 +135,6 @@
 		}
 		
 		public void printCamera(int y, int x) {
-			int yCamera = 15;
-			int xCamera = 35;
-			
 			for(int i = 0; i <= yCamera; i++) {
 				for(int j = 0; j <= xCamera; j++) {
 					if(i == yCamera / 2 && j == xCamera / 2) {
@@ -144,8 +154,8 @@
 		}
 		
 		public void checker(int y, int x) {
-			if(map[y][x] == 'v' || map[y][x] == 'V' && chanceChar(30)) {
-				scene.shopMenu();
+			if((map[y][x] == 'v' || map[y][x] == 'V') && chanceChar(90)) {
+			battle.menuBattle();
 			}		
 		}
 		

@@ -4,49 +4,71 @@ import java.util.Random;
 import java.util.Scanner;
 
 import game.Map;
+import helper.Color;
+import scene.Battle;
 
 public class Main {
 	Menus menu = new Menus();
 	Map map = new Map();
+	Color c = new Color();
+	
 	int xPlayer = map.getWidthSize() / 2;
 	int yPlayer = map.getHeightSize() / 2;
 	Scanner s = new Scanner(System.in);
-
+	
+	
+	
 	public void move() {
 		String input;
 		
-		int tempX, tempY;
 		System.out.print(">> ");
 		input = s.nextLine();
 		
+		int preX = 0, preY = 0;
+		
+		
 		if(input.equals("w") || input.equals("W")) {
-			yPlayer--;
+			preY = -1;
 		} else if(input.equals("a") || input.equals("A")) {
-			xPlayer--;
+			preX = -1;
 		} else if(input.equals("d") || input.equals("D")) {
-			xPlayer++;
+			preX = 1;
 		} else if(input.equals("s") || input.equals("S")) {
-			yPlayer++;
+			preY = 1;
 		} else {
 			move();
 			return;
 		}
 		
-		if(!map.isEmpty(yPlayer, xPlayer)) map.checker(yPlayer, xPlayer);
+		int yCamera = map.getYCamera() / 2;
+		int xCamera = map.getXCamera() / 2;
 		
-		menu.cls();
+		int xShadow = xPlayer + preX + xCamera;
+		int yShadow = yPlayer + preY + yCamera;
+		
+//		map.isPreMoveEmpty(yPlayer + preY + yCamera, xPlayer + preX + xCamera);
+		if(map.isPreMoveEmpty(yShadow, xShadow) == false) {
+			map.checker(yShadow, xShadow);
+		} 
+		
+		yPlayer += preY;
+		xPlayer += preX;
+		
+		menu.cls(); 
 		map.printCamera(yPlayer, xPlayer);
 	}
 	
 	public Main() {
+		
+		
 //		menu.enter();
 		map.initMap();
-		map.printMap();
+//		map.printMap();
 //		map.printCamera(yPlayer, xPlayer);
-		
-		while(true) {
-			move();
-		}
+		new Battle().menuBattle();
+//		while(true) {
+//			move();
+//		}
 	}
 
 	public static void main(String[] args) {

@@ -9,12 +9,12 @@ public class Menus {
 	public Menus() {
 	}
 	
-	void enter() {
+	public void enter() {
 		System.out.print("Please press enter to continue");
 		s.nextLine();
 	}
 	
-	void cls() {
+	public void cls() {
 		for(int i = 0; i < 50; i++) {
 			System.out.println();
 		}
