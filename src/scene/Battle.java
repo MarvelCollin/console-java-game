@@ -18,6 +18,10 @@ public class Battle {
 				+ "        \\/            \\/     \\/            \\/                                   \\/ " + c.RESET;
 		
 		System.out.println(ascii);
+		
+		// Defensive items
+		
+		
 	}
 
 	void userTurn() {
