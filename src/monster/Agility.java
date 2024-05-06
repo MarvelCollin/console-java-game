@@ -1,16 +1,25 @@
 package monster;
 
 public class Agility extends Monster{
+	int critical;
+	
 	public Agility(String name) {
 		super(name);
 		damage = initDamage();
 		health = initHealth();
+		type = "Agility";
 	}
 
 	@Override
-	public int attack() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int attack() {	
+		critical = f.random(1,3);
+		int damage = f.random(40, 50) * critical;
+		System.out.println(c.RED + getName() + " is a Agility Hero, Using skills with damage critical " + damage);
+		
+		System.out.println();
+		System.out.println("Receive damage " + damage + c.RESET);
+		
+		return damage;
 	}
 
 	@Override

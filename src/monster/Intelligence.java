@@ -6,18 +6,24 @@ public class Intelligence extends Monster{
 		super(name);
 		damage = initDamage();
 		health = initHealth();
+		type = "Intelligence";
 	}
 
 	@Override
-	public int attack() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int attack() {	
+		int skills = f.random(30, 49);
+		int damage = initDamage();
+		System.out.println(c.RED + getName() + " Attack with damage " + damage );
+		System.out.println(getName() + " is a Intelligence Hero, Using skills with damage " + skills );
+		
+		System.out.println();
+		System.out.println("Receive damage " + (damage + skills) + c.RESET);
+		return damage + skills;
 	}
 
 	@Override
 	public int initDamage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return f.random(10,20);
 	}
 
 	@Override
@@ -28,8 +34,7 @@ public class Intelligence extends Monster{
 
 	@Override
 	public int initHealth() {
-		// TODO Auto-generated method stub
-		return 0;
+		return f.random(100, 110);
 	}
 
 	@Override

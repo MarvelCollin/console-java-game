@@ -16,8 +16,6 @@ public class Main {
 	int yPlayer = map.getHeightSize() / 2;
 	Scanner s = new Scanner(System.in);
 	
-	
-	
 	public void move() {
 		String input;
 		
@@ -59,10 +57,8 @@ public class Main {
 	}
 	
 	public Main() {
-		
-		
 //		menu.enter();
-		map.initMap();
+		map.initMap();	
 //		map.printMap();
 //		map.printCamera(yPlayer, xPlayer);
 		new Battle().menuBattle();

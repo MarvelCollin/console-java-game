@@ -1,12 +1,14 @@
 package monster;
 
+import helper.Color;
+
 public class Strength extends Monster{
 	int armor;
-	
 	public Strength(String name) {
 		super(name);
 		damage = initDamage();
 		health = initHealth();
+		type = "Strength";
 	}
 
 	public int initArmor() {
@@ -14,15 +16,17 @@ public class Strength extends Monster{
 	}
 
 	@Override
-	public int attack() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int attack() {	
+		int damage = initDamage();
+		System.out.println(c.RED + getName() + " Attack with base damage " + damage);
+		System.out.println("Damage received " + damage + c.RESET);
+		
+		return damage;
 	}
 
 	@Override
 	public int initDamage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return f.random(20, 30);
 	}
 
 	@Override
@@ -33,8 +37,7 @@ public class Strength extends Monster{
 
 	@Override
 	public int initHealth() {
-		// TODO Auto-generated method stub
-		return 0;
+		return f.random(200, 210) - getDamage();
 	}
 
 

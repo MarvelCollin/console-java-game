@@ -7,10 +7,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import game.Player;
 import helper.Color;
 import helper.Function;
 import monster.Agility;
 import monster.Intelligence;
+import monster.Monster;
 import monster.Strength;
 
 public class Battle {
@@ -19,17 +21,19 @@ public class Battle {
 	String fileMonster = "monster.txt";
 	Function f = new Function();
 	String monsterName, type;
-	Strength st;
-	Agility agl;
-	Intelligence intl;
+	Monster monster = null;
+	boolean endBattle = false;
 	
+	public void initPlayer(Player player) {
+		
+	}
 	
 	public Battle() {
-		// TODO Auto-generated constructor stub
+		menuBattle();
 	}
 	
 	void monsterTurn() {
-		String ascii = c.RED + "   _____                          __                 ___________                   \r\n"
+		String ascii = c.PURPLE + "   _____                          __                 ___________                   \r\n"
 				+ "  /     \\   ____   ____   _______/  |_  ___________  \\__    ___/_ _________  ____  \r\n"
 				+ " /  \\ /  \\ /  _ \\ /    \\ /  ___/\\   __\\/ __ \\_  __ \\   |    | |  |  \\_  __ \\/    \\ \r\n"
 				+ "/    Y    (  <_> )   |  \\\\___ \\  |  | \\  ___/|  | \\/   |    | |  |  /|  | \\/   |  \\\r\n"
@@ -40,10 +44,14 @@ public class Battle {
 		
 		// Defensive items
 		
+		monster.attack();
 		
+		f.enter(true);
 	}
 	
 	void initMonster() {
+		turns = f.random(0, 1);
+		
 		 try {
 	            List <String> monsters = Files.readAllLines(Paths.get(fileMonster));
 	            // setiap nama bakalan ganti
@@ -72,34 +80,39 @@ public class Battle {
 	            
 	            String[] parts = getListMonsters.split("#", getHashtag);
 	            
-	            int whichMonster = f.random(0, getHashtag);
+	            int whichMonster = f.random(0, getHashtag - 1);
 	            monsterName = parts[whichMonster];
 	            
 	            // 1 -> Strength, 2 -> Intelligence, 3 -> Agility
 	            switch(line){
-	            case 1:
-	            	Strength strength = new Strength(monsterName);
+	            case 0:
+	            	monster = new Strength(monsterName);
 	            	break;
-	            case 2:
-	            	Intelligence intelligence = new Intelligence(monsterName);
+	            case 1:
+	            	monster = new Intelligence(monsterName);
+	            	break;
+	            case 2: 
+	            	monster = new Agility(monsterName);
+	            	break;
 	            }
-	            
-	            
 	        } catch (IOException e) {
 	            System.out.println("Failed");
 	        }
 	}
 
 	void userTurn() {
-		String ascii = "   _____   __    __                 __   .__                \r\n"
+		String ascii = c.GREEN + "   _____   __    __                 __   .__                \r\n"
 				+ "  /  _  \\_/  |__/  |______    ____ |  | _|__| ____    ____  \r\n"
 				+ " /  /_\\  \\   __\\   __\\__  \\ _/ ___\\|  |/ /  |/    \\  / ___\\ \r\n"
 				+ "/    |    \\  |  |  |  / __ \\\\  \\___|    <|  |   |  \\/ /_/  >\r\n"
 				+ "\\____|__  /__|  |__| (____  /\\___  >__|_ \\__|___|  /\\___  / \r\n"
-				+ "        \\/                \\/     \\/     \\/       \\//_____/  ";
+				+ "        \\/                \\/     \\/     \\/       \\//_____/  " + c.RESET;
 		
-		System.out.print(ascii);
-	
+		System.out.println(ascii);
+		
+		monster.printStats();	
+		f.enter(true);
+		
 	}
 	
 	
@@ -109,13 +122,17 @@ public class Battle {
 		} else {
 			userTurn();
 		}
+		
+		turns++;
 	}
 	
 	public void menuBattle() {
-//		turns = r.nextInt(1);
 		initMonster();
-//		monsterTurn();
-//		whoTurn();
+		while(!endBattle) {
+			whoTurn();
+			
+		}
+//		turns = r.nextInt(1);
 		
 	}
 }
