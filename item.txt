@@ -1,0 +1,15 @@
+RBOOCH#Revenants Brooch#spell#64#50#7
+STNIC#Satanic#defensive#42#30#3
+BTLFR#Battle Fury#offensive#91#100#6
+MYSTF#Mystic Staff#spell#36#30#5
+UTMTOB#Ultimate Orb#offensive#77#50#8
+SCRC#Sacred Relic#defensive#18#15#4
+WCTHBLD#Witch Blade#spell#7#5#2
+WRHBND#Wraith Band#offensive#5#3#9
+VNGRD#Vanguard#defensive#27#20#4
+TMLRLC#Timeless Relice#spell#30#20#3
+VNDCT#Vindicator's#offensive#20#15#2
+URNSHDW#Urn Of Shadows#defensive#27#21#6
+TRDNT#Trident#spell#22#15#1
+SHDWBLD#Shadow Blade#offensive#21#15#5
+STTSHLD#Stout Shield#defensive#23#24#2

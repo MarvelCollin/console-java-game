@@ -1,12 +1,12 @@
 package monster;
 
 public class Agility extends Monster{
-	
-	public Agility(int damage, int health) {
-		this.damage = damage;
-		int a = r.nextInt();
+	public Agility(String name) {
+		super(name);
+		damage = initDamage();
+		health = initHealth();
 	}
-	
+
 	@Override
 	public int attack() {
 		// TODO Auto-generated method stub
@@ -15,8 +15,7 @@ public class Agility extends Monster{
 
 	@Override
 	public int initDamage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return f.random(40, 50);
 	}
 
 	@Override
@@ -27,8 +26,7 @@ public class Agility extends Monster{
 
 	@Override
 	public int initHealth() {
-		// TODO Auto-generated method stub
-		return 0;
+		return f.random(100, 120) - getDamage();
 	}
 
 	@Override

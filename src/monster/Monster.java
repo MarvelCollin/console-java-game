@@ -2,11 +2,21 @@ package monster;
 
 import java.util.Random;
 
+import helper.Function;
+
 public abstract class Monster {
+	String name;
 	int damage;
 	int health;
 	
+	Function f = new Function();
 	public Random r = new Random();
+	
+	public Monster(String name) {
+		super();
+		this.name = name;
+	}
+
 	public abstract int attack();
 	public abstract int initDamage();
 	public abstract int receiveDamage();
