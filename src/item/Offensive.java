@@ -1,5 +1,7 @@
 package item;
 
+import parent.Item;
+
 public class Offensive extends Item{
 	int attack;
 	

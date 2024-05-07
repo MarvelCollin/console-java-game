@@ -1,12 +1,15 @@
 		package game;
 	
-	import java.util.Random;
+	import java.security.cert.CollectionCertStoreParameters;
+import java.util.Random;
 
+import helper.Color;
+import helper.Function;
 import scene.Battle;
 	
 	public class Map {
-		private int widthSize = 350;
-		private int heightSize = 350;
+		private int widthSize = 370;
+		private int heightSize = 370;
 		private char[][] map = new char[heightSize][widthSize];
 		Random r = new Random();
 		private int xRadius = 3;
@@ -15,6 +18,9 @@ import scene.Battle;
 		Battle battle = new Battle();
 		private int yCamera = 15;
 		private int xCamera = 35;
+		Player player;
+		Function f = new Function();
+		Color c = new Color();
 		
 		public int getYCamera() {
 			return yCamera;
@@ -99,22 +105,26 @@ import scene.Battle;
 		    }
 		}
 
-		
 		public void initMap() {
 			for(int i = 0; i < heightSize; i++) {
 				for(int j = 0; j < widthSize; j++) {
 					if(i == heightSize - 1 || j == widthSize - 1 || i == 0 || j == 0) {
 						map[i][j] = '#';
+					} else if(i == 350 || j == 350 || i == 5 || j == 5) {
+						map[i][j] = '!';
 					} else {
 						map[i][j] = ' ';
 					}
 				}
 			}
 			
-			for(int i = 0; i < 350; i++) {
+			for(int i = 0; i < 400; i++) {
 				generate('v');
-				generate('O');
 				generate('#');
+			}
+			
+			for (int i = 0; i < 60; i++) {
+				generate('O');
 			}
 		}
 		
@@ -123,7 +133,8 @@ import scene.Battle;
 				for(int j = 0; j < widthSize; j++) {
 					if(i == heightSize - 1 || j == widthSize - 1 || i == 0 || j == 0) {
 						System.out.print("#");
-					} else {
+					} 
+					else {
 						System.out.print(map[i][j]);
 					}
 				}
@@ -150,10 +161,26 @@ import scene.Battle;
 			}
 		}
 		
+		public void initPlayer(Player player) {
+			this.player = player;
+		}
+		
 		public void checker(int y, int x) {
-			if((map[y][x] == 'v' || map[y][x] == 'V') && chanceChar(90)) {
+			if((map[y][x] == 'v' || map[y][x] == 'V') && chanceChar(30)) {
+			battle.init(player);
+			f.clr();
 			battle.menuBattle();
-			}		
+			} else if(map[y][x] == 'O') {
+				player.setHealth(player.getMoney() + 5);
+			}
+		}
+
+		public void setValue(char v, int y, int x) {
+			map[y][x] = v;
+		}
+		
+		public char getValue(int y, int x) {
+			return map[y][x];
 		}
 		
 		public int getWidthSize() {

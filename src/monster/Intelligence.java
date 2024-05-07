@@ -1,5 +1,7 @@
 package monster;
 
+import parent.Monster;
+
 public class Intelligence extends Monster{
 	
 	public Intelligence(String name) {

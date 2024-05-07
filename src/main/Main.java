@@ -6,28 +6,24 @@ import java.util.Scanner;
 import game.Map;
 import game.Player;
 import helper.Color;
+import helper.Helper;
 import scene.Battle;
 
-public class Main {
-	Menus menu = new Menus();
-	Map map = new Map();
-	Color c = new Color();
-	Battle battle = new Battle();
-	
+public class Main implements Helper{
 	int xPlayer = map.getWidthSize() / 2;
 	int yPlayer = map.getHeightSize() / 2;
-	Scanner s = new Scanner(System.in);
 	Player player = new Player(30, 30, 200, 250);
-			
+	String error = "";
 	
 	public void move() {
 		String input;
+		player.printStats();	
+		System.out.println(c.BACKGROUND_BLACK + c.GREEN + "Money : " + player.getMoney() + c.RESET);
 		
 		System.out.print(">> ");
 		input = s.nextLine();
 		
 		int preX = 0, preY = 0;
-		
 		
 		if(input.equals("w") || input.equals("W")) {
 			preY = -1;
@@ -48,28 +44,44 @@ public class Main {
 		int xShadow = xPlayer + preX + xCamera;
 		int yShadow = yPlayer + preY + yCamera;
 		
-//		map.isPreMoveEmpty(yPlayer + preY + yCamera, xPlayer + preX + xCamera);
-		if(map.isPreMoveEmpty(yShadow, xShadow) == false) {
+		
+		if(yShadow >= map.getHeightSize() - 2 || xShadow >= map.getWidthSize() - 2 || yPlayer <= 5 || xPlayer <= 5) {
+			System.out.println(c.RED + "It's Danger Zone, Please GET AWAY !!" + c.RESET);
+			xPlayer -= preX;
+			yPlayer  -= preY;
+//			menu.enter();
+		} else if(map.isPreMoveEmpty(yShadow, xShadow) == false) {
+			if(map.getValue(yShadow, xShadow) == 'O') {
+				player.setMoney(player.getMoney() + 5);
+			}
+			
+			if(map.getValue(yShadow, xShadow) == 'O') {
+				map.setValue(' ', yShadow, xShadow);
+			}
 			map.checker(yShadow, xShadow);
 		} 
 		
-		yPlayer += preY;
-		xPlayer += preX;
+		if(map.getValue(yShadow, xShadow) != '#') {
+			yPlayer += preY;
+			xPlayer += preX;
+		}
 		
 		menu.cls(); 
+		System.out.println(error);
 		map.printCamera(yPlayer, xPlayer);
 	}
 	
 	public Main() {
-//		menu.enter();
-		map.initMap();	
-//		map.printMap();
-//		map.printCamera(yPlayer, xPlayer);
-		battle.init(player);
-		battle.menuBattle();
-//		while(true) {
-//			move();
-//		}
+		map.initMap();
+		map.initPlayer(player);
+		map.printCamera(yPlayer, xPlayer);
+		while(true) {
+			if(error.length() > 0) {
+				System.out.println(error);
+			}
+			move();
+			error = "";
+		}
 	}
 
 	public static void main(String[] args) {

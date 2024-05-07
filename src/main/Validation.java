@@ -1,9 +1,5 @@
 package main;
 
-public class Validation {
+public interface Validation {
 
-	public Validation() {
-		// TODO Auto-generated constructor stub
-	}
-	
 }

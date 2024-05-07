@@ -1,6 +1,7 @@
 package monster;
 
 import helper.Color;
+import parent.Monster;
 
 public class Strength extends Monster{
 	int armor;

@@ -10,16 +10,16 @@ import java.util.Random;
 import game.Player;
 import helper.Color;
 import helper.Function;
+import helper.Helper;
 import monster.Agility;
 import monster.Intelligence;
-import monster.Monster;
 import monster.Strength;
+import parent.Monster;
 
-public class Battle {
-	Color c = new Color();
+public class Battle implements Helper{
+	
 	int turns;
 	String fileMonster = "monster.txt";
-	Function f = new Function();
 	String monsterName, type;
 	Monster monster;
 	boolean endBattle = false;
@@ -43,6 +43,10 @@ public class Battle {
 		
 		
 		player.setHealth(player.getHealth() - monster.attack());
+		monster.printStats();
+		System.out.println();
+		player.printStats();
+		
 		
 		f.enter(true);
 	}
@@ -112,21 +116,38 @@ public class Battle {
 		
 		monster.printStats();	
 		System.out.println();
-		System.out.println();
 		player.printStats();
+		
+		int damage = player.menuAttack();
+		
+		if(damage < 0) {
+			player.setMana(player.getMana() + 10);
+		} else {
+			monster.setHealth(monster.getHealth() - damage);
+		}
+		
 		f.enter(true);
-		
-		
 	}
 	
 	
 	void whoTurn() {
+		
+		
 		if(turns % 2 == 0) {
 			monsterTurn();
 		} else {
 			userTurn();
 		}
 		
+//		System.out.println("Player health " + player.getHealth());
+//		System.out.println("Monster health " + monster.getHealth());
+		if(player.getHealth() <= 0) {
+			System.out.println("User won !");
+			endBattle = true;
+		} else if(monster.getHealth() <= 0){
+			System.out.println("Monster won !");
+			endBattle = true;
+		}
 		turns++;
 	}
 	
@@ -134,6 +155,7 @@ public class Battle {
 		while(!endBattle) {
 			whoTurn();
 		}
+		
 //		turns = r.nextInt(1);
 		
 	}

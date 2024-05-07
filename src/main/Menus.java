@@ -3,7 +3,9 @@ package main;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class Menus {
+import helper.Helper;
+
+public class Menus implements Validation, Helper{
 	public static Scanner s = new Scanner(System.in);
 	
 	public Menus() {

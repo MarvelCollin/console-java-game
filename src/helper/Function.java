@@ -3,13 +3,7 @@ package helper;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Function {
-	Color c = new Color();
-	
-	public Function() {
-		// TODO Auto-generated constructor stub
-	}
-	
+public class Function implements Helper{
 	public static int random(int min, int max) {
 		Random r = new Random();
 		return r.nextInt(max - min + 1) + min;

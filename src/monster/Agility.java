@@ -1,5 +1,7 @@
 package monster;
 
+import parent.Monster;
+
 public class Agility extends Monster{
 	int critical;
 	

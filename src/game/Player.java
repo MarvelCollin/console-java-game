@@ -1,10 +1,8 @@
 package game;
 
-import helper.Color;
+import helper.Helper;
 
-public class Player {
-	Color c = new Color();
-	
+public class Player implements Helper{
 	private int damage, mana, health, money;
 
 	public Player(int damage, int mana, int health, int money) {
@@ -56,13 +54,38 @@ public class Player {
         System.out.println("Mana: " + getMana() + " " + c.RESET);
 	}
 	
+	public int getDamageItem() {
+		return 10;
+	}
+	
 	public int menuAttack() {
 		int choice;
-		
+		System.out.println();
 		System.out.println("1. Normal Attack");
 		System.out.println("2. Attack with item");
 		System.out.println("3. Store Mana");
+		System.out.print("Choice >> ");
+		choice = s.nextInt(); s.nextLine();
 		
+		
+		System.out.println();
+		switch(choice) {
+		case 1: 
+			System.out.println("User attack with Base Damage > " + getDamage() + c.RESET);
+			return getDamage();
+		case 2:
+			System.out.println("User attack with item > " + (getDamage() + getDamageItem()) + c.RESET);
+			return getDamage() + getDamageItem();
+		case 3:
+			System.out.println("Storing 10 mana" + c.RESET);
+			return -10;
+//			return setMana();
+		default:
+			menuAttack();
+			break;
+		}
+		
+		return getDamage();
 	}
 
 }

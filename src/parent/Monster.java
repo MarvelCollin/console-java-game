@@ -1,4 +1,4 @@
-package monster;
+package parent;
 
 import java.util.Random;
 
@@ -6,14 +6,14 @@ import helper.Color;
 import helper.Function;
 
 public abstract class Monster {
-	String name;
-	int damage;
-	int health;
-	String type;
+	protected String name;
+	protected int damage;
+	protected int health;
+	protected String type;
 	
-	Function f = new Function();
-	Color c = new Color();
-	public Random r = new Random();
+	protected Function f = new Function();
+	protected Color c = new Color();
+	protected Random r = new Random();
 	
 	public Monster(String name) {
 		super();
@@ -56,7 +56,8 @@ public abstract class Monster {
 	}
 	
 	public void printStats() {
-		System.out.println(c.WHITE);
+		System.out.println(c.RED);
+		System.out.println("--Current Monster Stats--");
         System.out.println(c.BACKGROUND_BLACK + "Monster Stats: ");
         System.out.println("Name: " + getName() + " ");
         System.out.println("Type: " + getType() + " ");
