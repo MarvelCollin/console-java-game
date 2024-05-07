@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import game.Map;
+import game.Player;
 import helper.Color;
 import scene.Battle;
 
@@ -11,10 +12,13 @@ public class Main {
 	Menus menu = new Menus();
 	Map map = new Map();
 	Color c = new Color();
+	Battle battle = new Battle();
 	
 	int xPlayer = map.getWidthSize() / 2;
 	int yPlayer = map.getHeightSize() / 2;
 	Scanner s = new Scanner(System.in);
+	Player player = new Player(30, 30, 200, 250);
+			
 	
 	public void move() {
 		String input;
@@ -61,7 +65,8 @@ public class Main {
 		map.initMap();	
 //		map.printMap();
 //		map.printCamera(yPlayer, xPlayer);
-		new Battle().menuBattle();
+		battle.init(player);
+		battle.menuBattle();
 //		while(true) {
 //			move();
 //		}

@@ -72,36 +72,33 @@ import scene.Battle;
 		}
 		
 		private void generate(char value) {
-			int xRand = r.nextInt(heightSize - 20) + 10;
-			int yRand = r.nextInt(widthSize - 20) + 10;
-			
-			boolean bigGrass = false;
-			
-			if(value != 'O') {
-				if(inRadiusEmpty(yRand,xRand)) {
-					for(int i = 0; i < yRadius; i++) {
-						for(int j = 0; j < xRadius; j++) {
-							if(chanceChar(30)) {
-								if(value == 'v' && !bigGrass) {
-									if(chanceChar(40))
-									{
-										value = 'V';
-										bigGrass = true;
-									}
-								}
-								
-								map[i + yRand][j + xRand] = value; 
-								if(value == 'V') value = 'v';
-							}
-						}
-					}
-				}
-			} else {
-				if(isEmpty(yRand, xRand) && chanceChar(10)) {
-					map[yRand][xRand] = 'O';
-				}
-			}
+		    int xRand = r.nextInt(heightSize - 20) + 10;
+		    int yRand = r.nextInt(widthSize - 20) + 10;
+
+		    if (value == 'O') {
+		        if (isEmpty(yRand, xRand) && chanceChar(10)) {
+		            map[yRand][xRand] = 'O';
+		        }
+		        return;
+		    }
+
+		    boolean bigGrass = false;
+		    if (!inRadiusEmpty(yRand, xRand)) return;
+
+		    for (int i = 0; i < yRadius; i++) {
+		        for (int j = 0; j < xRadius; j++) {
+		            if (chanceChar(30)) {
+		                if (value == 'v' && !bigGrass && chanceChar(40)) {
+		                    value = 'V';
+		                    bigGrass = true;
+		                }
+		                map[i + yRand][j + xRand] = value;
+		                if (value == 'V') value = 'v';
+		            }
+		        }
+		    }
 		}
+
 		
 		public void initMap() {
 			for(int i = 0; i < heightSize; i++) {

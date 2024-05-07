@@ -21,15 +21,12 @@ public class Battle {
 	String fileMonster = "monster.txt";
 	Function f = new Function();
 	String monsterName, type;
-	Monster monster = null;
+	Monster monster;
 	boolean endBattle = false;
-	
-	public void initPlayer(Player player) {
-		
-	}
+	Player player;
 	
 	public Battle() {
-		menuBattle();
+
 	}
 	
 	void monsterTurn() {
@@ -44,12 +41,15 @@ public class Battle {
 		
 		// Defensive items
 		
-		monster.attack();
+		
+		player.setHealth(player.getHealth() - monster.attack());
 		
 		f.enter(true);
 	}
 	
-	void initMonster() {
+	public void init(Player initPLayer) {
+		player = initPLayer;
+		
 		turns = f.random(0, 1);
 		
 		 try {
@@ -111,7 +111,11 @@ public class Battle {
 		System.out.println(ascii);
 		
 		monster.printStats();	
+		System.out.println();
+		System.out.println();
+		player.printStats();
 		f.enter(true);
+		
 		
 	}
 	
@@ -127,10 +131,8 @@ public class Battle {
 	}
 	
 	public void menuBattle() {
-		initMonster();
 		while(!endBattle) {
 			whoTurn();
-			
 		}
 //		turns = r.nextInt(1);
 		

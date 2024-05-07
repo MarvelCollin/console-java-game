@@ -1,6 +1,10 @@
 package game;
 
+import helper.Color;
+
 public class Player {
+	Color c = new Color();
+	
 	private int damage, mana, health, money;
 
 	public Player(int damage, int mana, int health, int money) {
@@ -43,6 +47,22 @@ public class Player {
 		this.money = money;
 	}
 	
+	public void printStats() {
+		System.out.println(c.GREEN);
+		System.out.println("--Current Player Stats--");
+        System.out.println(c.BACKGROUND_BLACK + "Monster Stats: ");
+        System.out.println("Health: " + getHealth() + " ");
+        System.out.println("Damage: " + getDamage() + " ");
+        System.out.println("Mana: " + getMana() + " " + c.RESET);
+	}
 	
+	public int menuAttack() {
+		int choice;
+		
+		System.out.println("1. Normal Attack");
+		System.out.println("2. Attack with item");
+		System.out.println("3. Store Mana");
+		
+	}
 
 }

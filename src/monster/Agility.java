@@ -13,8 +13,11 @@ public class Agility extends Monster{
 	@Override
 	public int attack() {	
 		critical = f.random(1,3);
-		int damage = f.random(40, 50) * critical;
-		System.out.println(c.RED + getName() + " is a Agility Hero, Using skills with damage critical " + damage);
+		int damage = this.damage * critical;
+		System.out.println(c.RED + "Attack with base damage > " + this.damage);
+		if(critical != 1) {
+			System.out.println(getName() + " is a Agility Hero, Using skills with damage critical " + damage);
+		}
 		
 		System.out.println();
 		System.out.println("Receive damage " + damage + c.RESET);
