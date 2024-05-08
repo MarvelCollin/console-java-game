@@ -1,26 +1,16 @@
 		package game;
-	
-	import java.security.cert.CollectionCertStoreParameters;
-import java.util.Random;
 
-import helper.Color;
-import helper.Function;
-import scene.Battle;
-	
-	public class Map {
+import helper.Helper;
+
+public class Map implements Helper {
 		private int widthSize = 370;
 		private int heightSize = 370;
 		private char[][] map = new char[heightSize][widthSize];
-		Random r = new Random();
 		private int xRadius = 3;
 		private int yRadius = 3;
 		private int xBorder = 6, yBorder = 6;
-		Battle battle = new Battle();
 		private int yCamera = 15;
 		private int xCamera = 35;
-		Player player;
-		Function f = new Function();
-		Color c = new Color();
 		
 		public int getYCamera() {
 			return yCamera;
@@ -110,8 +100,6 @@ import scene.Battle;
 				for(int j = 0; j < widthSize; j++) {
 					if(i == heightSize - 1 || j == widthSize - 1 || i == 0 || j == 0) {
 						map[i][j] = '#';
-					} else if(i == 350 || j == 350 || i == 5 || j == 5) {
-						map[i][j] = '!';
 					} else {
 						map[i][j] = ' ';
 					}
@@ -162,21 +150,17 @@ import scene.Battle;
 				System.out.println();
 			}
 			
-			player.printStats();	
-			System.out.println(c.BACKGROUND_BLACK + c.GREEN + "Money : " + player.getMoney() + c.RESET);
-		}
-		
-		public void initPlayer(Player player) {
-			this.player = player;
+			currPlayer.printStats();	
+			System.out.println(c.BACKGROUND_BLACK + c.GREEN + "Money : " + currPlayer.getMoney() + c.RESET);
 		}
 		
 		public void checker(int y, int x) {
 			if((map[y][x] == 'v' || map[y][x] == 'V') && chanceChar(30)) {
-			battle.init(player);
+			battle.init(currPlayer);
 			f.clr();
 			battle.menuBattle();
 			} else if(map[y][x] == 'O') {
-				player.setHealth(player.getMoney() + 5);
+				currPlayer.setHealth(currPlayer.getMoney() + 5);
 			}
 		}
 

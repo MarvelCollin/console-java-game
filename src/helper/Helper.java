@@ -1,9 +1,11 @@
 package helper;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import game.Map;
 import game.Player;
+import main.App;
 import main.Menus;
 import scene.Battle;
 
@@ -14,5 +16,9 @@ public interface Helper {
 	Menus menu = new Menus();
 	Map map = new Map();
 	Battle battle = new Battle();
-	Player currPlayer = new Player(0, 0, 0, 0, null, 0, null, 0, null, 0);
+	Player currPlayer = new Player(30, 30, 300, 40, null, 0, null, 0, null, 0);
+	Validation v = new Validation();
+	boolean endGame = false;
+	App app = new App();	
+	Random r = new Random();
 }

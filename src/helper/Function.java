@@ -1,5 +1,6 @@
 package helper;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -29,4 +30,8 @@ public class Function implements Helper{
 			System.out.println();
 		}
 	}
+	
+    public static void loading() {
+     
+    }
 }

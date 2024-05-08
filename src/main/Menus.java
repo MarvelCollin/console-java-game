@@ -1,13 +1,7 @@
 package main;
 
-import java.util.Iterator;
-import java.util.Scanner;
-
 import helper.Helper;
-
-public class Menus implements Validation, Helper{
-	public static Scanner s = new Scanner(System.in);
-	
+public class Menus implements Helper{
 	public Menus() {
 	}
 	
@@ -22,35 +16,39 @@ public class Menus implements Validation, Helper{
 		}
 	}
 	
+	void guide() {
+		
+	}
+	
 	void game() {
+		String play = "__________.____       _____ _____.___.\r\n"
+				+ "\\______   \\    |     /  _  \\\\__  |   |\r\n"
+				+ " |     ___/    |    /  /_\\  \\/   |   |\r\n"
+				+ " |    |   |    |___/    |    \\____   |\r\n"
+				+ " |____|   |_______ \\____|__  / ______|\r\n"
+				+ "                  \\/       \\/\\/       ";	
+		
+		System.out.println(c.PURPLE + play + c.RESET);
+		
 		int choice;
-		System.out.println("1. Start Game");
-		System.out.println("2. Game Guide");
-		System.out.println("3. Exit Game");
-		System.out.print("Choice >> ");
-		choice = s.nextInt(); s.nextLine();
+		do {
+			System.out.println("1. Start Game");
+			System.out.println("2. Game Guide");
+			System.out.println("3. Exit Game");
+			System.out.print("Choice >> ");
+			choice = s.nextInt(); s.nextLine();
+		} while (choice < 1 || choice > 3);
 	
 		switch(choice) {
 		case 1:
-			
-		}
-	}
-	
-	void landingPage() {
-		int choice;
-		System.out.println("1. Login");
-		System.out.println("2. Register");
-		System.out.println("3. Exit");
-		System.out.print("Choice >> ");
-		choice = s.nextInt(); s.nextLine();
-	
-		switch(choice) {
-		case 1:
-			game();
+			map.printCamera(choice, choice);
+			while(!endGame) app.move();
+		case 2:
+			guide();
 			break;
-		default: 
-			landingPage();
+		case 3: 
 			break;
 		}
 	}
+	
 }

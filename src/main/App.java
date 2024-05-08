@@ -1,5 +1,10 @@
 package main;
 
+import java.awt.Menu;
+
+import javax.sound.sampled.AudioFileFormat;
+
+import game.Authentication;
 import game.Player;
 import helper.Helper;
 import scene.Shop;
@@ -7,15 +12,18 @@ import scene.Shop;
 public class App implements Helper{
 	int xPlayer = map.getWidthSize() / 2;
 	int yPlayer = map.getHeightSize() / 2;
-	Player player = new Player(30, 30, 200, 250);
+//	Player player = new Player(30, 30, 200, 250);
 	String error = "";
 	
 	public void move() {
+		f.clr();
+		map.printCamera(yPlayer, xPlayer);
 		String input;
 		
-		
-		System.out.print(">> ");
-		input = s.nextLine();
+		do {
+			System.out.print(">> ");
+			input = s.nextLine();
+		} while (input.length() < 1);
 		
 		int preX = 0, preY = 0;
 		
@@ -46,7 +54,7 @@ public class App implements Helper{
 //			menu.enter();
 		} else if(map.isPreMoveEmpty(yShadow, xShadow) == false) {
 			if(map.getValue(yShadow, xShadow) == 'O') {
-				player.setMoney(player.getMoney() + 5);
+				currPlayer.setMoney(currPlayer.getMoney() + 5);
 			}
 			
 			if(map.getValue(yShadow, xShadow) == 'O') {
@@ -62,22 +70,12 @@ public class App implements Helper{
 		
 		menu.cls(); 
 		System.out.println(error);
-		map.printCamera(yPlayer, xPlayer);
 	}
 	
-	public App() {
-		new Shop();
+	void init() {
+		map.initMap();
 		
-//		map.initMap();
-//		map.initPlayer(player);
-//		map.printCamera(yPlayer, xPlayer);
-//		while(true) {
-//			if(error.length() > 0) {
-//				System.out.println(error);
-//			}
-//			move();
-//			error = "";
-//		}
+		menu.game();
 	}
-
+	
 }

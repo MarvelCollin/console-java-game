@@ -9,9 +9,9 @@ import helper.Color;
 import helper.Helper;
 import scene.Battle;
 
-public class Main {
+public class Main implements Helper{
 	public Main() {
-		new App();
+		app.init();;
 	}
 
 	public static void main(String[] args) {
