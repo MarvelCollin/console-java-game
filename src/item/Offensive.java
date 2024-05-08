@@ -3,12 +3,15 @@ package item;
 import parent.Item;
 
 public class Offensive extends Item{
+	int damage;
+	int maxUse;
 
-	public Offensive(String id, String name, String type, int value, int price, int maxUse) {
-		super(id, name, type, value, price, maxUse);
-		// TODO Auto-generated constructor stub
+	public Offensive(String id, String name, String type, int price, int damage, int maxUse) {
+		super(id, name, type, price);
+		this.damage = damage;
+		this.maxUse = maxUse;
 	}
-	
+
 	public void ascii() {
 		String ascii = "________   _____  _____                    .__              \r\n"
 				+ "\\_____  \\_/ ____\\/ ____\\____   ____   _____|__|__  __ ____  \r\n"
@@ -20,4 +23,21 @@ public class Offensive extends Item{
 		
 		System.out.println(c.RED + ascii + c.RESET);
 	}
+
+	public int getDamage() {
+		return damage;
+	}
+
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+
+	public int getMaxUse() {
+		return maxUse;
+	}
+
+	public void setMaxUse(int maxUse) {
+		this.maxUse = maxUse;
+	}
+
 }

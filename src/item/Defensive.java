@@ -5,11 +5,15 @@ import java.util.ArrayList;
 import parent.Item;
 
 public class Defensive extends Item{
-	public Defensive(String id, String name, String type, int value, int price, int maxUse) {
-		super(id, name, type, value, price, maxUse);
-		// TODO Auto-generated constructor stub
-	}
+	int deflect;
+	int maxUse;
 	
+	public Defensive(String id, String name, String type, int price, int deflect, int maxUse) {
+		super(id, name, type, price);
+		this.deflect = deflect;
+		this.maxUse = maxUse;
+	}
+
 	public void ascii() {
 		String ascii = "________          _____                    .__              \r\n"
 				+ "\\______ \\   _____/ ____\\____   ____   _____|__|__  __ ____  \r\n"
@@ -20,6 +24,22 @@ public class Defensive extends Item{
 		
 		
 		System.out.println(c.GREEN + ascii + c.RESET);
+	}
+
+	public int getDeflect() {
+		return deflect;
+	}
+
+	public void setDeflect(int deflect) {
+		this.deflect = deflect;
+	}
+
+	public int getMaxUse() {
+		return maxUse;
+	}
+
+	public void setMaxUse(int maxUse) {
+		this.maxUse = maxUse;
 	}
 
 }

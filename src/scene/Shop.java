@@ -20,16 +20,14 @@ public class Shop implements Helper{
 	ArrayList<Defensive> defensive = new ArrayList<Defensive>();
 	ArrayList<Offensive> offensive = new ArrayList<Offensive>();
 	ArrayList<Spell> spell = new ArrayList<Spell>();
-	Menus menu;
-	
+
 	public Shop() {
 	    init();
 	    menu();
-	    
 	}
 
 	void menu() {
-		menu.cls();
+		f.clr();
 		String shopAscii = "  _________.__                       _____                       \r\n"
 				+ " /   _____/|  |__   ____ ______     /     \\   ____   ____  __ __ \r\n"
 				+ " \\_____  \\ |  |  \\ /  _ \\\\____ \\   /  \\ /  \\_/ __ \\ /    \\|  |  \\\r\n"
@@ -45,38 +43,84 @@ public class Shop implements Helper{
 		System.out.println("2. Buy Defensive Item");
 		System.out.println("3. Buy Spells Item");
 		System.out.println("4. Exit");
-		choice = s.nextInt(); s.nextLine();
-		
-		switch(choice) {
-		case 1: 
-			printList("Offensive", offensive);
-			break;
-		case 2: 
-			printList("Defensive", defensive);
-			break;
-		case 3:
-			printList("Spell", spell);
-			break;
-		default: 
-			break;
-		}
+		do {
+			System.out.print(">> ");
+			choice = s.nextInt(); s.nextLine();
+			
+			switch(choice) {
+			case 1: 
+				printList("Offensive");
+				break;
+			case 2: 
+				printList("Defensive");
+				break;
+			case 3:
+				printList("Spell");
+				break;
+			case 4:
+				break;
+			}
+		} while (choice < 1 || choice > 4);
 		
 		String whichItem = "";
-		System.out.print("Input item's ID ['EXIT' to cancel] >> ");
-		whichItem = s.nextLine();
+		Item items;
+		do {
+			System.out.print("Input item's ID ['EXIT' to cancel] >> ");
+			whichItem = s.nextLine();
+			if(whichItem.equals("EXIT")) return;
+			items = getDetail(whichItem);
+		} while (whichItem.length() < 1 || items == null);
 		
 	}
 
-	void printList(String header, List<? extends Item> items) {
+	Item getDetail(String ID) {
+		// 1 -> off, 2 -> def, 3 -> spell
+		for (Offensive o : offensive) {
+			if(ID.equals(o.getId())) {
+				return o;
+			}
+		}
+		
+		for (Defensive o : defensive) {
+			if(ID.equals(o.getId())) {
+				return o;
+			}
+		}
+		for (Spell o : spell) {
+			if(ID.equals(o.getId())) {
+				return o;
+			}
+		}
+		
+		return null;
+		
+		
+	}
+	
+	void printList(String header) {
+		menu.cls();
 		System.out.println();
-		items.get(0).ascii();
 		System.out.println();
-	    printHead();
-	    if (!items.isEmpty()) {
-	        for (Item item : items) {
-	            item.display();
-	        }
-	    }
+	    
+		if(header.equals("Defensive")) {
+			defensive.get(0).ascii();
+			printHead();
+			for (Defensive d : defensive) {
+				d.display(d.getDeflect(), d.getMaxUse());
+			}
+		} else if(header.equals("Offensive")) {
+			offensive.get(0).ascii();
+			printHead();
+			for (Offensive d : offensive) {
+				d.display(d.getDamage(), d.getMaxUse());
+			}
+		} else if(header.equals("Spell")) {
+			spell.get(0).ascii();
+			printHead();
+			for (Spell d : spell) {
+				d.display(d.getDamage(), d.getMana());
+			}
+		}
 	    printBottom();
 	}
 

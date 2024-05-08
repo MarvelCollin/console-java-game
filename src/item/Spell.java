@@ -3,12 +3,15 @@ package item;
 import parent.Item;
 
 public class Spell extends Item {
+	int damage;
+	int mana;
 
-	public Spell(String id, String name, String type, int value, int price, int maxUse) {
-		super(id, name, type, value, price, maxUse);
-		// TODO Auto-generated constructor stub
+	public Spell(String id, String name, String type, int price, int damage, int mana) {
+		super(id, name, type, price);	
+		this.damage = damage;
+		this.mana = mana;
 	}
-	
+
 	public void ascii() {
 		String ascii = "  _________             .__  .__   \r\n"
 				+ " /   _____/_____   ____ |  | |  |  \r\n"
@@ -20,4 +23,22 @@ public class Spell extends Item {
 		
 		System.out.println(c.BLUE + ascii + c.RESET);
 	}
+
+	public int getDamage() {
+		return damage;
+	}
+
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+
+	public int getMana() {
+		return mana;
+	}
+
+	public void setMana(int mana) {
+		this.mana = mana;
+	}
+	
+	
 }
