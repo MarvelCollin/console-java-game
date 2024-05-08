@@ -53,8 +53,8 @@ import scene.Battle;
 		}
 		
 		private boolean inRadiusEmpty(int y, int x) {
-			for(int i = (xRadius + yBorder) * -1; i < xRadius + yBorder; i++) {
-				for(int j = (xRadius + xBorder) * -1; j < xRadius + xBorder; j++) {
+			for(int i = -2; i < xRadius + yBorder; i++) {
+				for(int j = -2; j < xRadius + xBorder; j++) {
 					if(!isEmpty(y + i, x + j)) return false;
 				}
 			}
@@ -123,7 +123,7 @@ import scene.Battle;
 				generate('#');
 			}
 			
-			for (int i = 0; i < 60; i++) {
+			for (int i = 0; i < 200; i++) {
 				generate('O');
 			}
 		}
@@ -140,6 +140,8 @@ import scene.Battle;
 				}
 				System.out.println();
 			}
+			
+			
 		}
 		
 		public void printCamera(int y, int x) {
@@ -159,6 +161,9 @@ import scene.Battle;
 				}
 				System.out.println();
 			}
+			
+			player.printStats();	
+			System.out.println(c.BACKGROUND_BLACK + c.GREEN + "Money : " + player.getMoney() + c.RESET);
 		}
 		
 		public void initPlayer(Player player) {

@@ -131,8 +131,6 @@ public class Battle implements Helper{
 	
 	
 	void whoTurn() {
-		
-		
 		if(turns % 2 == 0) {
 			monsterTurn();
 		} else {

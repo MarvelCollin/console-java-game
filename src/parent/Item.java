@@ -1,17 +1,27 @@
 package parent;
 
-public class Item {
-	String id;
-	String name;
-	String type;
-	int price;
-	int maxUse;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import helper.Helper;
+
+public class Item implements Helper{
+	private String id;
+	private String name;
+	private String type;
+	private int value;
+	private int price;
+	private int maxUse;
 	
-	public Item(String id, String name, String type, int price, int maxUse) {
+	public Item(String id, String name, String type, int value, int price, int maxUse) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
+		this.value = value;
 		this.price = price;
 		this.maxUse = maxUse;
 	}
@@ -40,6 +50,14 @@ public class Item {
 		this.type = type;
 	}
 
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
 	public int getPrice() {
 		return price;
 	}
@@ -56,7 +74,11 @@ public class Item {
 		this.maxUse = maxUse;
 	}
 	
-	
-	
-	
+	public void display() {
+		System.out.printf("| %-9s | %-18s | %-10s | $%-5s | %-6s | %-8s |%n", getId(), getName(), getType(),getPrice(), getValue(), getMaxUse());
+	}
+
+	public void ascii() {
+		//override
+	}
 }
