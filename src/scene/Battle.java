@@ -140,16 +140,31 @@ public class Battle implements Helper{
 //		System.out.println("Player health " + player.getHealth());
 //		System.out.println("Monster health " + monster.getHealth());
 		if(player.getHealth() <= 0) {
-			System.out.println("User won !");
+			System.out.println(c.RED + output.lose + c.RESET);
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			endBattle = true;
 		} else if(monster.getHealth() <= 0){
-			System.out.println("Monster won !");
+			currPlayer.setMoney(currPlayer.getMoney() + 30);
+			System.out.println(c.GREEN + output.won + c.RESET);
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			endBattle = true;
 		}
 		turns++;
 	}
 	
 	public void menuBattle() {
+		endBattle = false;
+		
 		while(!endBattle) {
 			whoTurn();
 		}

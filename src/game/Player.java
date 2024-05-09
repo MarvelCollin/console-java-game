@@ -30,73 +30,49 @@ public class Player implements Helper{
 		return offensive;
 	}
 
-
-
 	public void setOffensive(String offensive) {
 		this.offensive = offensive;
 	}
-
-
 
 	public int getOffUsed() {
 		return offUsed;
 	}
 
-
-
 	public void setOffUsed(int offUsed) {
 		this.offUsed = offUsed;
 	}
-
-
 
 	public String getDefensive() {
 		return defensive;
 	}
 
-
-
 	public void setDefensive(String defensive) {
 		this.defensive = defensive;
 	}
-
-
 
 	public int getArmorLeft() {
 		return armorLeft;
 	}
 
-
-
 	public void setArmorLeft(int armorLeft) {
 		this.armorLeft = armorLeft;
 	}
-
-
 
 	public String getSpell() {
 		return spell;
 	}
 
-
-
 	public void setSpell(String spell) {
 		this.spell = spell;
 	}
-
-
 
 	public int getSpellUsed() {
 		return spellUsed;
 	}
 
-
-
 	public void setSpellUsed(int spellUsed) {
 		this.spellUsed = spellUsed;
 	}
-
-
 
 	public int getDamage() {
 		return damage;
@@ -173,4 +149,18 @@ public class Player implements Helper{
 		return getDamage();
 	}
 
+	public void setAll(int damage, int mana, int health, int money, String offensive, int offUsed, String defensive,
+			int armorLeft, String spell, int spellUsed) {
+		this.damage = damage;
+		this.mana = mana;
+		this.health = health;
+		this.money = money;
+		this.offensive = offensive;
+		this.offUsed = offUsed;
+		this.defensive = defensive;
+		this.armorLeft = armorLeft;
+		this.spell = spell;
+		this.spellUsed = spellUsed;
+	}
+	
 }

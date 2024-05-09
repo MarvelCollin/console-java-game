@@ -20,7 +20,9 @@ public class Menus implements Helper{
 		
 	}
 	
-	void game() {
+	public void game() {
+		f.clr();
+		
 		String play = "__________.____       _____ _____.___.\r\n"
 				+ "\\______   \\    |     /  _  \\\\__  |   |\r\n"
 				+ " |     ___/    |    /  /_\\  \\/   |   |\r\n"

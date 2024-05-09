@@ -159,6 +159,8 @@ public class Map implements Helper {
 			battle.init(currPlayer);
 			f.clr();
 			battle.menuBattle();
+			setValue(' ', y, x);
+			
 			} else if(map[y][x] == 'O') {
 				currPlayer.setHealth(currPlayer.getMoney() + 5);
 			}

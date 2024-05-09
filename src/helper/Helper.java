@@ -3,8 +3,11 @@ package helper;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.DefaultBoundedRangeModel;
+
 import game.Map;
 import game.Player;
+import handler.UserHandler;
 import main.App;
 import main.Menus;
 import scene.Battle;
@@ -21,4 +24,6 @@ public interface Helper {
 	boolean endGame = false;
 	App app = new App();	
 	Random r = new Random();
+	Outputs output =  new Outputs();
+	UserHandler userHandler = new UserHandler();
 }

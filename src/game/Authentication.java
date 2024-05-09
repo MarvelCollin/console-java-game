@@ -1,5 +1,7 @@
 package game;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,7 +13,9 @@ import helper.Helper;
 public class Authentication implements Helper{
 
 	public Authentication() {
-		findByEmail("player1@mail.com");
+		welcome();
+		authMenu();
+
 	}
 
 	public void welcome() {
@@ -48,25 +52,21 @@ public class Authentication implements Helper{
 		
 		switch(choice) {
 		case 1: 
+			login();
+			break;
+		case 2:
+			register();
+			break;
 		}
 	}
 	
-	String findByEmail(String email) {
-		try {
-			List<String> lines = Files.readAllLines(Paths.get("credential.txt"));
-			
-			for (String line : lines) {
-				System.out.println(v.getEmail(line));
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+	void register() {
+		
 	}
 	
 	void login() {
 		String email, password;
-		System.out.println(c.BLUE + "Input 'EXIT' to cancel");
+		System.out.println(c.YELLOW + "Input 'EXIT' to cancel" + c.RESET);
 		
 		System.out.print("Input Email >> ");
 		email = s.nextLine();
@@ -76,7 +76,14 @@ public class Authentication implements Helper{
 		password = s.nextLine();
 		if(password.equals("EXIT")) authMenu();
 		
-		
+		if(userHandler.loginChecker("aa@mail.com", "123")) {
+			menu.game();
+			return;
+		} else {
+			System.out.println(c.RED + "Invalid Credentials !" + c.RESET);
+			login();
+			return;
+		}
 		
 	}
 	

@@ -17,8 +17,24 @@ public class App implements Helper{
 	
 	public void move() {
 		f.clr();
+		if(currPlayer.getHealth() < 1) {
+			System.out.println();
+			System.out.println(c.RED + "It seems like you're dead");
+			System.out.println(c.GREEN + "Automaticly Recover 10 HP > Cost 10 Coin" + c.RESET);
+			currPlayer.setHealth(10);
+			currPlayer.setMoney(currPlayer.getMoney() - 10);;
+			System.out.println();
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 		map.printCamera(yPlayer, xPlayer);
 		String input;
+		
 		
 		do {
 			System.out.print(">> ");
@@ -74,8 +90,8 @@ public class App implements Helper{
 	
 	void init() {
 		map.initMap();
-		
-		menu.game();
+		new Authentication();
+//		;
 	}
 	
 }
