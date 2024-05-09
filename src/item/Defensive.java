@@ -5,15 +5,16 @@ import java.util.ArrayList;
 import parent.Item;
 
 public class Defensive extends Item{
-	int deflect;
-	int maxUse;
+	private int deflect;
+	private int maxUse;
 	
-	public Defensive(String id, String name, String type, int price, int deflect, int maxUse) {
-		super(id, name, type, price);
+	public Defensive(String id, String name, String type, int price, int useLeft, int deflect, int maxUse) {
+		super(id, name, type, price, useLeft);
 		this.deflect = deflect;
 		this.maxUse = maxUse;
 	}
-
+	
+	
 	public void ascii() {
 		String ascii = "________          _____                    .__              \r\n"
 				+ "\\______ \\   _____/ ____\\____   ____   _____|__|__  __ ____  \r\n"

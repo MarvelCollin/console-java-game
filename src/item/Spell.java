@@ -3,11 +3,11 @@ package item;
 import parent.Item;
 
 public class Spell extends Item {
-	int damage;
-	int mana;
+	private int damage;
+	private int mana;
 
-	public Spell(String id, String name, String type, int price, int damage, int mana) {
-		super(id, name, type, price);	
+	public Spell(String id, String name, String type, int price, int useLeft, int damage, int mana) {
+		super(id, name, type, price, useLeft);
 		this.damage = damage;
 		this.mana = mana;
 	}

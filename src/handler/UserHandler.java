@@ -3,8 +3,12 @@ package handler;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import helper.Helper;
+import item.Defensive;
+import item.Offensive;
+import item.Spell;
 
 public class UserHandler implements Helper{
 	
@@ -38,9 +42,9 @@ public class UserHandler implements Helper{
                 mana = f.StringDoubleToInt(parts[4]);
                 
                 String[] items = parts[5].split("-");
+                gettingItems(items);
                 
-                
-                currPlayer.setAll(30, mana, health, money, offensive, usedOff, armor, usedArmor, spell, usedSpell);
+                currPlayer.setAll(30, mana, health, money);
                 return true;
             }
             
@@ -48,8 +52,37 @@ public class UserHandler implements Helper{
             e.printStackTrace();
         }
 		return false;
-
     }
+	
+	public void gettingItems(String[] str) {
+		for(int i = 0; i < str.length; i++) {
+			String[] div = str[i].split("@");
+			
+			for (Offensive o : offensiveShop) {
+				if(o.getId().equals(div[0])) {
+					currOffensive.add(o);
+					currOffensive.get(currOffensive.size() - 1).setUseLeft(f.StringToInt(div[2]));
+					break;
+				}
+			}
+			
+			for (Defensive d : defensiveShop) {
+				if(d.getId().equals(div[0])) {
+					defensiveShop.add(d);
+					defensiveShop.get(defensiveShop.size() - 1).setUseLeft(f.StringToInt(div[2]));
+					break;
+				}
+			}
+			
+			for (Spell s : spellShop) {
+				if(s.getId().equals(div[0])) {
+					spellShop.add(s);
+					spellShop.get(spellShop.size() - 1).setUseLeft(f.StringToInt(div[2]));
+					break;
+				}
+			}
+		}
+	}
 	
 	void displayCurr() {
 //        System.out.println("Email: " + email);

@@ -17,12 +17,8 @@ import monster.Strength;
 import parent.Item;
 
 public class Shop implements Helper{
-	ArrayList<Defensive> defensiveShop = new ArrayList<Defensive>();
-	ArrayList<Offensive> offensiveShop = new ArrayList<Offensive>();
-	ArrayList<Spell> spellShop = new ArrayList<Spell>();
-
 	public void menu() {
-		init();
+//		init();
 		f.clr();
 		String shopAscii = "  _________.__                       _____                       \r\n"
 				+ " /   _____/|  |__   ____ ______     /     \\   ____   ____  __ __ \r\n"
@@ -145,13 +141,13 @@ public class Shop implements Helper{
 
 	            switch (type) {
 	                case "spell":
-	                    spellShop.add(new Spell(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5])));
+	                    spellShop.add(new Spell(parts[0], parts[1], type, toInt(parts[3]), 0, toInt(parts[4]), toInt(parts[5])));
 	                    break;
 	                case "defensive":
-	                    defensiveShop.add(new Defensive(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5])));
+	                    defensiveShop.add(new Defensive(parts[0], parts[1], type, toInt(parts[3]),0 , toInt(parts[4]), toInt(parts[5])));
 	                    break;
 	                case "offensive":
-	                	offensiveShop.add(new Offensive(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5])));
+	                	offensiveShop.add(new Offensive(parts[0], parts[1], type, toInt(parts[3]), 0, toInt(parts[4]), toInt(parts[5])));
 	                    break;
 	            }
 	        }
@@ -161,7 +157,7 @@ public class Shop implements Helper{
 	}
 
 	
-	void init() {
+	public void init() {
 		// temp way
 		defensiveShop.removeAll(defensiveShop);
 		offensiveShop.removeAll(offensiveShop);

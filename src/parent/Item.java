@@ -7,13 +7,23 @@ public class Item implements Helper{
 	private String name;
 	private String type;
 	private int price;
+	private int useLeft;
 	
-	public Item(String id, String name, String type,int price) {
+	public Item(String id, String name, String type,int price, int useLeft) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.price = price;
+		this.useLeft = useLeft;
+	}
+
+	public int getUseLeft() {
+		return useLeft;
+	}
+
+	public void setUseLeft(int useLeft) {
+		this.useLeft = useLeft;
 	}
 
 	public String getId() {

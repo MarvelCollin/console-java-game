@@ -6,6 +6,7 @@ import javax.sound.sampled.AudioFileFormat;
 
 import game.Authentication;
 import game.Player;
+import handler.UserHandler;
 import helper.Helper;
 import scene.Shop;
 
@@ -87,6 +88,7 @@ public class App implements Helper{
 	}
 	
 	void init() {
+		shop.init();
 		map.initMap();
 		new Authentication();
 	}
