@@ -6,8 +6,8 @@ public class Offensive extends Item{
 	int damage;
 	int maxUse;
 
-	public Offensive(String id, String name, String type, int price, int damage, int maxUse) {
-		super(id, name, type, price);
+	public Offensive(String id, String name, String type, int price, int useLeft, boolean bought, int damage, int maxUse) {
+		super(id, name, type, price, useLeft, bought);
 		this.damage = damage;
 		this.maxUse = maxUse;
 	}

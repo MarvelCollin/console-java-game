@@ -7,14 +7,40 @@ public class Item implements Helper{
 	private String name;
 	private String type;
 	private int price;
+	private int useLeft;
+	private boolean bought;
 	
-	public Item(String id, String name, String type,int price) {
+	public Item(String id, String name, String type, int price, int useLeft, boolean bought) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.price = price;
+		this.useLeft = useLeft;
+		this.bought = bought;
 	}
+
+	public int getUseLeft() {
+		return useLeft;
+	}
+
+	public void setUseLeft(int useLeft) {
+		this.useLeft = useLeft;
+	}
+
+
+
+	public boolean isBought() {
+		return bought;
+	}
+
+
+
+	public void setBought(boolean bought) {
+		this.bought = bought;
+	}
+
+
 
 	public String getId() {
 		return id;

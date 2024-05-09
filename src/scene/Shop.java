@@ -21,12 +21,8 @@ public class Shop implements Helper{
 	ArrayList<Offensive> offensive = new ArrayList<Offensive>();
 	ArrayList<Spell> spell = new ArrayList<Spell>();
 
-	public Shop() {
-	    init();
-	    menu();
-	}
-
-	void menu() {
+	public void menu() {
+		init();
 		f.clr();
 		String shopAscii = "  _________.__                       _____                       \r\n"
 				+ " /   _____/|  |__   ____ ______     /     \\   ____   ____  __ __ \r\n"
@@ -149,13 +145,13 @@ public class Shop implements Helper{
 
 	            switch (type) {
 	                case "spell":
-	                    spell.add(new Spell(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5])));
+	                    spell.add(new Spell(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5]), 0, false));
 	                    break;
 	                case "defensive":
-	                    defensive.add(new Defensive(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5])));
+	                    defensive.add(new Defensive(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5]), 0, false));
 	                    break;
 	                case "offensive":
-	                	offensive.add(new Offensive(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5])));
+	                	offensive.add(new Offensive(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5]), 0, false));
 	                    break;
 	            }
 	        }

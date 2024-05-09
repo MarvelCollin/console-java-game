@@ -56,12 +56,17 @@ public abstract class Monster {
 	}
 	
 	public void printStats() {
-		System.out.println(c.RED);
-		System.out.println("--Current Monster Stats--");
-        System.out.println(c.BACKGROUND_BLACK + "Monster Stats: ");
-        System.out.println("Name: " + getName() + " ");
-        System.out.println("Type: " + getType() + " ");
-        System.out.println("Damage: " + getDamage() + " ");
-        System.out.println("Health: " + getHealth() + " " + c.RESET);
+	    System.out.println(c.RED);
+	    System.out.println("--Current Monster Stats--");
+
+	    System.out.println("+---------------------------------+");
+	    System.out.printf("| %-10s | %-18s |\n", "Name:", getName());
+	    System.out.printf("| %-10s | %-18s |\n", "Type:", getType());
+	    System.out.printf("| %-10s | %-18d |\n", "Damage:", getDamage());
+	    System.out.printf("| %-10s | %-18d |\n", "Health:", getHealth());
+	    System.out.println("+---------------------------------+");
+
+	    System.out.println(c.RESET);
 	}
+
 }

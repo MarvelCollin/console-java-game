@@ -34,7 +34,7 @@ public class Menus implements Helper, Outputs{
 			System.out.print("Choice >> ");
 			choice = s.nextInt(); s.nextLine();
 		} while (choice < 1 || choice > 3);
-	
+		
 		switch(choice) {
 		case 1:
 			map.printCamera(choice, choice);

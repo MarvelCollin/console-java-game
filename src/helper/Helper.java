@@ -11,6 +11,7 @@ import handler.UserHandler;
 import main.App;
 import main.Menus;
 import scene.Battle;
+import scene.Shop;
 
 public interface Helper {
 	Scanner s = new Scanner(System.in);
@@ -25,4 +26,5 @@ public interface Helper {
 	App app = new App();	
 	Random r = new Random();
 	UserHandler userHandler = new UserHandler();
+	Shop shop = new Shop();
 }

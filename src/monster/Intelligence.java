@@ -15,7 +15,7 @@ public class Intelligence extends Monster{
 	public int attack() {	
 		int skills = f.random(30, 49);
 		int damage = initDamage();
-		System.out.println(c.RED + getName() + " Attack with damage " + damage );
+		System.out.println(c.BRIGHT_RED + getName() + " Attack with damage " + damage );
 		System.out.println(getName() + " is a Intelligence Hero, Using skills with damage " + skills );
 		
 		System.out.println();

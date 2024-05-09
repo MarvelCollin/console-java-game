@@ -8,8 +8,8 @@ public class Defensive extends Item{
 	int deflect;
 	int maxUse;
 	
-	public Defensive(String id, String name, String type, int price, int deflect, int maxUse) {
-		super(id, name, type, price);
+	public Defensive(String id, String name, String type, int price, int useLeft, boolean bought, int deflect, int maxUse) {
+		super(id, name, type, price, useLeft, bought);
 		this.deflect = deflect;
 		this.maxUse = maxUse;
 	}

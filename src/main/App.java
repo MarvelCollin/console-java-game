@@ -24,16 +24,10 @@ public class App implements Helper{
 			currPlayer.setHealth(10);
 			currPlayer.setMoney(currPlayer.getMoney() - 10);;
 			System.out.println();
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			f.sleeping(3000);
 		}
 		map.printCamera(yPlayer, xPlayer);
-		String input;
+		String input = "";
 		
 		
 		do {
@@ -50,6 +44,10 @@ public class App implements Helper{
 		} else if(input.equals("d") || input.equals("D")) {
 			preX = 1;
 		} else if(input.equals("s") || input.equals("S")) {
+			preY = 1;
+		} else if(input.equals("z") || input.equals("Z")) {
+			shop.menu();
+		} else if(input.equals("i") || input.equals("I")) {
 			preY = 1;
 		} else {
 			move();

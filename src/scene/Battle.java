@@ -33,11 +33,11 @@ public class Battle implements Helper, Outputs{
 	void monsterTurn() {
 		System.out.println(c.PURPLE + monsterAttacking + c.RESET);
 		
-		player.setHealth(player.getHealth() - monster.attack());
 		monster.printStats();
 		System.out.println();
 		player.printStats();
 		
+		player.setHealth(player.getHealth() - monster.attack());
 		
 		f.enter(true);
 	}
@@ -125,22 +125,15 @@ public class Battle implements Helper, Outputs{
 //		System.out.println("Monster health " + monster.getHealth());
 		if(player.getHealth() <= 0) {
 			System.out.println(c.RED + lose + c.RESET);
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			f.sleeping(3000);
 			endBattle = true;
 		} else if(monster.getHealth() <= 0){
 			currPlayer.setMoney(currPlayer.getMoney() + 30);
 			System.out.println(c.GREEN + won + c.RESET);
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			f.sleeping(3000);
+			System.out.print(c.YELLOW + picking30Coin);
+			System.out.println(c.RESET);
+			f.sleeping(1500);
 			endBattle = true;
 		}
 		turns++;
@@ -148,6 +141,11 @@ public class Battle implements Helper, Outputs{
 	
 	public void menuBattle() {
 		endBattle = false;
+		System.out.println(c.YELLOW + huh + c.RESET);
+		f.sleeping(1000);
+		System.out.println(c.RED + monsterNearby + c.RESET);
+		f.sleeping(2000);
+		f.enter(true);
 		
 		while(!endBattle) {
 			whoTurn();

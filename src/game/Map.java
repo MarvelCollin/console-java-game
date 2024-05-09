@@ -154,7 +154,6 @@ public class Map implements Helper {
 			}
 			
 			currPlayer.printStats();	
-			System.out.println(c.BACKGROUND_BLACK + c.GREEN + "Money : " + currPlayer.getMoney() + c.RESET);
 		}
 		
 		public void checker(int y, int x) {

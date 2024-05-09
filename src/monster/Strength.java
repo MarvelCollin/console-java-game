@@ -19,7 +19,7 @@ public class Strength extends Monster{
 	@Override
 	public int attack() {	
 		int damage = initDamage();
-		System.out.println(c.RED + getName() + " Attack with base damage " + damage);
+		System.out.println(c.BRIGHT_RED + getName() + " Attack with base damage " + damage);
 		System.out.println("Damage received " + damage + c.RESET);
 		
 		return damage;

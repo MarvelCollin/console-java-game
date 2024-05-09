@@ -109,12 +109,12 @@ public class Player implements Helper{
 	public void printStats() {
 	    System.out.println(c.GREEN);
 	    System.out.println("--Current Player Stats--");
-	    System.out.println(c.BACKGROUND_BLACK);
 
 	    System.out.println("+----------------------+");
 	    System.out.printf("| %-10s | %-7d |\n", "Health:", getHealth());
 	    System.out.printf("| %-10s | %-7d |\n", "Damage:", getDamage());
 	    System.out.printf("| %-10s | %-7d |\n", "Mana:", getMana());
+	    System.out.printf("| %-10s | %-7d |\n", "Money:", getMoney());
 	    System.out.println("+----------------------+");
 	    
 	    System.out.println(c.RESET);
@@ -134,19 +134,17 @@ public class Player implements Helper{
 		System.out.print("Choice >> ");
 		choice = s.nextInt(); s.nextLine();
 		
-		
 		System.out.println();
 		switch(choice) {
 		case 1: 
-			System.out.println("User attack with Base Damage > " + getDamage() + c.RESET);
+			System.out.println(c.BRIGHT_GREEN + "User attack with Base Damage > " + getDamage() + c.RESET);
 			return getDamage();
 		case 2:
-			System.out.println("User attack with item > " + (getDamage() + getDamageItem()) + c.RESET);
+			System.out.println(c.BRIGHT_GREEN + "User attack with item > " + (getDamage() + getDamageItem()) + c.RESET);
 			return getDamage() + getDamageItem();
 		case 3:
-			System.out.println("Storing 10 mana" + c.RESET);
+			System.out.println(c.BRIGHT_BLUE + "Storing 10 mana" + c.RESET);
 			return -10;
-//			return setMana();
 		default:
 			menuAttack();
 			break;
