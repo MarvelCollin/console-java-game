@@ -1,7 +1,8 @@
 package main;
 
 import helper.Helper;
-public class Menus implements Helper{
+import helper.Outputs;
+public class Menus implements Helper, Outputs{
 	public Menus() {
 	}
 	
@@ -22,13 +23,6 @@ public class Menus implements Helper{
 	
 	public void game() {
 		f.clr();
-		
-		String play = "__________.____       _____ _____.___.\r\n"
-				+ "\\______   \\    |     /  _  \\\\__  |   |\r\n"
-				+ " |     ___/    |    /  /_\\  \\/   |   |\r\n"
-				+ " |    |   |    |___/    |    \\____   |\r\n"
-				+ " |____|   |_______ \\____|__  / ______|\r\n"
-				+ "                  \\/       \\/\\/       ";	
 		
 		System.out.println(c.PURPLE + play + c.RESET);
 		

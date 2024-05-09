@@ -24,6 +24,5 @@ public interface Helper {
 	boolean endGame = false;
 	App app = new App();	
 	Random r = new Random();
-	Outputs output =  new Outputs();
 	UserHandler userHandler = new UserHandler();
 }

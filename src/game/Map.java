@@ -139,10 +139,13 @@ public class Map implements Helper {
 						System.out.print("X");
 					} else if((j == 0 && i == 0) || (i == yCamera && j == 0) || (i == 0 && j == xCamera) || (i == yCamera && j == xCamera)) {
 						System.out.print("+");
+//						System.out.print(c.YELLOW + "+" + c.RESET);
 					} else if(j == xCamera || j == 0) {
 						System.out.print("|");
+//						System.out.print(c.BRIGHT_RED + "|" + c.RESET);
 					} else if(i == 0 || i == yCamera) {
 						System.out.print("-");
+//						System.out.print(c.BRIGHT_RED + "-" + c.RESET);
 					} else {
 						System.out.print(map[y + i][x + j]);
 					}

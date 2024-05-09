@@ -91,7 +91,6 @@ public class App implements Helper{
 	void init() {
 		map.initMap();
 		new Authentication();
-//		;
 	}
 	
 }

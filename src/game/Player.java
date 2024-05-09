@@ -107,13 +107,19 @@ public class Player implements Helper{
 	}
 	
 	public void printStats() {
-		System.out.println(c.GREEN);
-		System.out.println("--Current Player Stats--");
-        System.out.println(c.BACKGROUND_BLACK + "Monster Stats: ");
-        System.out.println("Health: " + getHealth() + " ");
-        System.out.println("Damage: " + getDamage() + " ");
-        System.out.println("Mana: " + getMana() + " " + c.RESET);
+	    System.out.println(c.GREEN);
+	    System.out.println("--Current Player Stats--");
+	    System.out.println(c.BACKGROUND_BLACK);
+
+	    System.out.println("+----------------------+");
+	    System.out.printf("| %-10s | %-7d |\n", "Health:", getHealth());
+	    System.out.printf("| %-10s | %-7d |\n", "Damage:", getDamage());
+	    System.out.printf("| %-10s | %-7d |\n", "Mana:", getMana());
+	    System.out.println("+----------------------+");
+	    
+	    System.out.println(c.RESET);
 	}
+
 	
 	public int getDamageItem() {
 		return 10;

@@ -11,12 +11,13 @@ import game.Player;
 import helper.Color;
 import helper.Function;
 import helper.Helper;
+import helper.Outputs;
 import monster.Agility;
 import monster.Intelligence;
 import monster.Strength;
 import parent.Monster;
 
-public class Battle implements Helper{
+public class Battle implements Helper, Outputs{
 	
 	int turns;
 	String fileMonster = "monster.txt";
@@ -30,17 +31,7 @@ public class Battle implements Helper{
 	}
 	
 	void monsterTurn() {
-		String ascii = c.PURPLE + "   _____                          __                 ___________                   \r\n"
-				+ "  /     \\   ____   ____   _______/  |_  ___________  \\__    ___/_ _________  ____  \r\n"
-				+ " /  \\ /  \\ /  _ \\ /    \\ /  ___/\\   __\\/ __ \\_  __ \\   |    | |  |  \\_  __ \\/    \\ \r\n"
-				+ "/    Y    (  <_> )   |  \\\\___ \\  |  | \\  ___/|  | \\/   |    | |  |  /|  | \\/   |  \\\r\n"
-				+ "\\____|__  /\\____/|___|  /____  > |__|  \\___  >__|      |____| |____/ |__|  |___|  /\r\n"
-				+ "        \\/            \\/     \\/            \\/                                   \\/ " + c.RESET;
-		
-		System.out.println(ascii);
-		
-		// Defensive items
-		
+		System.out.println(c.PURPLE + monsterAttacking + c.RESET);
 		
 		player.setHealth(player.getHealth() - monster.attack());
 		monster.printStats();
@@ -105,14 +96,7 @@ public class Battle implements Helper{
 	}
 
 	void userTurn() {
-		String ascii = c.GREEN + "   _____   __    __                 __   .__                \r\n"
-				+ "  /  _  \\_/  |__/  |______    ____ |  | _|__| ____    ____  \r\n"
-				+ " /  /_\\  \\   __\\   __\\__  \\ _/ ___\\|  |/ /  |/    \\  / ___\\ \r\n"
-				+ "/    |    \\  |  |  |  / __ \\\\  \\___|    <|  |   |  \\/ /_/  >\r\n"
-				+ "\\____|__  /__|  |__| (____  /\\___  >__|_ \\__|___|  /\\___  / \r\n"
-				+ "        \\/                \\/     \\/     \\/       \\//_____/  " + c.RESET;
-		
-		System.out.println(ascii);
+		System.out.println(c.GREEN + userAttacking + c.RESET);
 		
 		monster.printStats();	
 		System.out.println();
@@ -140,7 +124,7 @@ public class Battle implements Helper{
 //		System.out.println("Player health " + player.getHealth());
 //		System.out.println("Monster health " + monster.getHealth());
 		if(player.getHealth() <= 0) {
-			System.out.println(c.RED + output.lose + c.RESET);
+			System.out.println(c.RED + lose + c.RESET);
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
@@ -150,7 +134,7 @@ public class Battle implements Helper{
 			endBattle = true;
 		} else if(monster.getHealth() <= 0){
 			currPlayer.setMoney(currPlayer.getMoney() + 30);
-			System.out.println(c.GREEN + output.won + c.RESET);
+			System.out.println(c.GREEN + won + c.RESET);
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {

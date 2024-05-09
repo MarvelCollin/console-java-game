@@ -28,6 +28,7 @@ public class UserHandler implements Helper{
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split("#");
                 
+                if(!parts[0].equals(emailInput)) continue;
                 if(!parts[0].equals(emailInput) && !parts[1].equals(passwordInput)) continue; 
                 
                 email = parts[0]; 
@@ -50,7 +51,7 @@ public class UserHandler implements Helper{
                 spell = spe[0];
                 usedSpell = f.StringToInt(spe[1]);
                 
-                currPlayer.setAll(usedSpell, mana, health, money, offensive, usedOff, offensive, usedArmor, spell, usedSpell);
+                currPlayer.setAll(30, mana, health, money, offensive, usedOff, armor, usedArmor, spell, usedSpell);
                 return true;
             }
             
