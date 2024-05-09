@@ -39,17 +39,6 @@ public class UserHandler implements Helper{
                 
                 String[] items = parts[5].split("-");
                 
-                String[] off = items[0].split("@");
-                offensive = off[0];
-                usedOff = f.StringToInt(off[1]);
-
-                String[] arm = items[0].split("@");
-                armor = arm[0];
-                usedArmor = f.StringToInt(arm[1]);
-                
-                String[] spe = items[0].split("@");
-                spell = spe[0];
-                usedSpell = f.StringToInt(spe[1]);
                 
                 currPlayer.setAll(30, mana, health, money, offensive, usedOff, armor, usedArmor, spell, usedSpell);
                 return true;

@@ -143,7 +143,9 @@ public class Battle implements Helper, Outputs{
 		endBattle = false;
 		System.out.println(c.YELLOW + huh + c.RESET);
 		f.sleeping(1000);
-		System.out.println(c.RED + monsterNearby + c.RESET);
+		System.out.println(c.RED + feel);
+		System.out.println(watched + c.RESET);
+//		System.out.println(c.RED + monsterNearby + c.RESET);
 		f.sleeping(2000);
 		f.enter(true);
 		

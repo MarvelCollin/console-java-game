@@ -75,7 +75,7 @@ public class Authentication implements Helper, Outputs{
 		if(password.equals("EXIT")) authMenu();
 		
 		if(!userHandler.loginChecker(email, password)) {
-			String value = email + "#" + password + "#80#300.00#30.00#WRHBND@0-SCRC@0-WCTHBLD@0";
+			String value = email + "#" + password + "#80#300.00#30.00#WRHBND";
 			
 			f.writeFile(value, "credential.txt", true);
 			f.clr();

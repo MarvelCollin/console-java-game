@@ -6,8 +6,8 @@ public class Spell extends Item {
 	int damage;
 	int mana;
 
-	public Spell(String id, String name, String type, int price, int useLeft, boolean bought, int damage, int mana) {
-		super(id, name, type, price, useLeft, bought);	
+	public Spell(String id, String name, String type, int price, int damage, int mana) {
+		super(id, name, type, price);	
 		this.damage = damage;
 		this.mana = mana;
 	}

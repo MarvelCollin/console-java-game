@@ -17,9 +17,9 @@ import monster.Strength;
 import parent.Item;
 
 public class Shop implements Helper{
-	ArrayList<Defensive> defensive = new ArrayList<Defensive>();
-	ArrayList<Offensive> offensive = new ArrayList<Offensive>();
-	ArrayList<Spell> spell = new ArrayList<Spell>();
+	ArrayList<Defensive> defensiveShop = new ArrayList<Defensive>();
+	ArrayList<Offensive> offensiveShop = new ArrayList<Offensive>();
+	ArrayList<Spell> spellShop = new ArrayList<Spell>();
 
 	public void menu() {
 		init();
@@ -71,18 +71,18 @@ public class Shop implements Helper{
 
 	Item getDetail(String ID) {
 		// 1 -> off, 2 -> def, 3 -> spell
-		for (Offensive o : offensive) {
+		for (Offensive o : offensiveShop) {
 			if(ID.equals(o.getId())) {
 				return o;
 			}
 		}
 		
-		for (Defensive o : defensive) {
+		for (Defensive o : defensiveShop) {
 			if(ID.equals(o.getId())) {
 				return o;
 			}
 		}
-		for (Spell o : spell) {
+		for (Spell o : spellShop) {
 			if(ID.equals(o.getId())) {
 				return o;
 			}
@@ -99,21 +99,21 @@ public class Shop implements Helper{
 		System.out.println();
 	    
 		if(header.equals("Defensive")) {
-			defensive.get(0).ascii();
+			defensiveShop.get(0).ascii();
 			printHead();
-			for (Defensive d : defensive) {
+			for (Defensive d : defensiveShop) {
 				d.display(d.getDeflect(), d.getMaxUse());
 			}
 		} else if(header.equals("Offensive")) {
-			offensive.get(0).ascii();
+			offensiveShop.get(0).ascii();
 			printHead();
-			for (Offensive d : offensive) {
+			for (Offensive d : offensiveShop) {
 				d.display(d.getDamage(), d.getMaxUse());
 			}
 		} else if(header.equals("Spell")) {
-			spell.get(0).ascii();
+			spellShop.get(0).ascii();
 			printHead();
-			for (Spell d : spell) {
+			for (Spell d : spellShop) {
 				d.display(d.getDamage(), d.getMana());
 			}
 		}
@@ -145,13 +145,13 @@ public class Shop implements Helper{
 
 	            switch (type) {
 	                case "spell":
-	                    spell.add(new Spell(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5]), 0, false));
+	                    spellShop.add(new Spell(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5])));
 	                    break;
 	                case "defensive":
-	                    defensive.add(new Defensive(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5]), 0, false));
+	                    defensiveShop.add(new Defensive(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5])));
 	                    break;
 	                case "offensive":
-	                	offensive.add(new Offensive(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5]), 0, false));
+	                	offensiveShop.add(new Offensive(parts[0], parts[1], type, toInt(parts[3]), toInt(parts[4]), toInt(parts[5])));
 	                    break;
 	            }
 	        }
@@ -162,9 +162,10 @@ public class Shop implements Helper{
 
 	
 	void init() {
-		defensive.removeAll(defensive);
-		offensive.removeAll(offensive);
-		spell.removeAll(spell);
+		// temp way
+		defensiveShop.removeAll(defensiveShop);
+		offensiveShop.removeAll(offensiveShop);
+		spellShop.removeAll(spellShop);
 		
 		readFile("item.txt");
 	}
