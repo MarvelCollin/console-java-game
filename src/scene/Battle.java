@@ -36,7 +36,14 @@ public class Battle implements Helper, Outputs{
 		System.out.println();
 		player.printStats();
 		
-		player.setHealth(player.getHealth() - monster.attack());
+		int damaged = player.receiveDamage() - monster.attack();
+		
+		if(damaged > 0) {
+			System.out.println(c.BRIGHT_GREEN + "uh.. your armor is too strong, the monster doesnt gave any damage !" + c.RESET);
+		} else {
+			player.setHealth(player.getHealth() + damaged);
+			System.out.println(c.RED + "Total damage received > " + damaged + c.RESET);
+		}
 		
 		f.enter(true);
 	}
@@ -124,14 +131,16 @@ public class Battle implements Helper, Outputs{
 //		System.out.println("Monster health " + monster.getHealth());
 		if(player.getHealth() <= 0) {
 			System.out.println(c.RED + lose + c.RESET);
-			f.sleeping(3000);
+			f.sleeping(2000);
 			endBattle = true;
 		} else if(monster.getHealth() <= 0){
 			currPlayer.setMoney(currPlayer.getMoney() + 30);
 			System.out.println(c.GREEN + won + c.RESET);
-			f.sleeping(3000);
+			f.sleeping(2000);
 			System.out.print(c.YELLOW + picking30Coin);
 			System.out.println(c.RESET);
+			System.out.println(c.BRIGHT_GREEN + "Restoring 100 HP..." + c.RESET);
+			currPlayer.setHealth(currPlayer.getHealth() + 100);
 			f.sleeping(1500);
 			endBattle = true;
 		}

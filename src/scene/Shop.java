@@ -35,7 +35,8 @@ public class Shop implements Helper{
 		System.out.println("1. Buy Offensive Item");
 		System.out.println("2. Buy Defensive Item");
 		System.out.println("3. Buy Spells Item");
-		System.out.println("4. Exit");
+		System.out.println("4. Restore 50 Health -> 30 coins");
+		System.out.println("5. Exit");
 		do {
 			System.out.print(">> ");
 			choice = s.nextInt(); s.nextLine();
@@ -54,9 +55,14 @@ public class Shop implements Helper{
 				currChoice = 3;
 				break;
 			case 4:
+				System.out.println(c.BRIGHT_GREEN + "Restoring 50 Health..." + c.RESET);
+				currPlayer.setHealth(currPlayer.getHealth() + 40);
+				currPlayer.setMoney(currPlayer.getMoney() - 30);
+				break;
+			case 5:
 				break;
 			}
-		} while (choice < 1 || choice > 4);
+		} while (choice < 1 || choice > 5);
 		
 		String whichItem = "";
 		Item items;

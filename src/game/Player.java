@@ -29,7 +29,11 @@ public class Player implements Helper, Outputs{
 	}
 
 	public void setMana(int mana) {
-		this.mana = mana;
+		if(mana > 30) {
+			this.mana = 30;
+		} else {
+			this.mana = mana;
+		}
 	}
 
 	public int getHealth() {
@@ -37,7 +41,11 @@ public class Player implements Helper, Outputs{
 	}
 
 	public void setHealth(int health) {
-		this.health = health;
+		if(health > 300) {
+			this.health = 300;
+		} else {
+			this.health = health;
+		}
 	}
 
 	public int getMoney() {
@@ -46,6 +54,10 @@ public class Player implements Helper, Outputs{
 
 	public void setMoney(int money) {
 		this.money = money;
+	}
+	
+	public void addMoney(int money) {
+		setMoney(getMoney() + money);
 	}
 	
 	public void printStats() {
@@ -66,16 +78,29 @@ public class Player implements Helper, Outputs{
 	public int getDamageItem(String id) {
 		for (Offensive o : currOffensive) {
 			if(o.getId().equals(id)) {
+				int damage = o.getDamage();
+				
 				System.out.println(c.BRIGHT_GREEN + "You attacked with " + o.getName() + " with damage " + o.getDamage() + c.RESET);
-				o.setUseLeft(o.getUseLeft() - 1);
-				return o.getDamage();
+				if(o.getUseLeft() == 1) {
+					System.out.println(c.RED + o.getName() + " cant be used anymore. throwing to trashcan..." + c.RESET);
+					currOffensive.remove(o);
+				} else {
+					o.setUseLeft(o.getUseLeft() - 1);
+				}
+				return damage;
 			}
 		}
 		
 		for (Spell o : currSpell) {
 			if(o.getId().equals(id)) {
-				System.out.println(c.BRIGHT_GREEN + "You attacked with " + o.getName() + " with damage " + o.getDamage() + c.RESET);
+				if(currPlayer.getMana() < o.getMana()) {
+					System.out.println(c.RED + "Ehh!? it seems like you dont have enough mana" + c.RESET);
+					return 0;
+				}
+				System.out.println(c.BRIGHT_GREEN + "You Spell-ed with " + o.getName() + " with damage " + o.getDamage() + c.RESET);
+				System.out.println(c.BRIGHT_BLUE + "Cost " + o.getMana() + " Mana" + c.RESET);
 				o.setUseLeft(o.getUseLeft() - 1);
+				currPlayer.setMana(currPlayer.getMana() - o.getMana());
 				return o.getDamage();
 			}
 		}
@@ -174,4 +199,34 @@ public class Player implements Helper, Outputs{
 		f.enter(true);
 	}
 	
+	public int receiveDamage() {
+		displayDefensive();
+		
+		String choose = "";
+		System.out.print(c.BLUE + "Choose item's ID [wont use item -> 'NO'] > " + c.RESET);
+		if(choose.equals("NO")) return 0;
+		choose = s.nextLine();
+		
+		//get Armor
+		
+		for (Defensive d : currDefensive) {
+			if(d.getId().equals(choose)) {
+				
+				int deflect = d.getDeflect();
+				String name = d.getName();
+				if(d.getUseLeft() == 1) {
+					System.out.println(c.RED + "This armor gonna be your last !" + c.RESET);
+					currDefensive.remove(d);
+				}
+				
+				System.out.println(c.BRIGHT_BLUE + "Succesfully equip " + name + " With deflect > " + deflect + c.RESET);
+				d.setUseLeft(d.getUseLeft() - 1);
+				
+				return d.getDeflect();
+			}
+		}
+		
+		System.out.println(c.RED + "You're too late !!" + c.RESET);
+		return 0;
+	}
 }
