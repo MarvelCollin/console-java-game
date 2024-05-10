@@ -12,7 +12,6 @@ import item.Offensive;
 import item.Spell;
 
 public class UserHandler implements Helper, Outputs{
-	
 	public boolean loginChecker(String emailInput, String passwordInput) {
         String filePath = "credential.txt";
 
@@ -35,9 +34,9 @@ public class UserHandler implements Helper, Outputs{
                 money = f.StringToInt(parts[2]);
                 health = f.StringDoubleToInt(parts[3]);
                 mana = f.StringDoubleToInt(parts[4]);
-                
 //                System.out.println(parts[5]);
-                
+                currPlayer.setEmail(email);
+                currPlayer.setPassword(password);
                 String[] items = parts[5].split("-");
                 gettingItems(items);
                 

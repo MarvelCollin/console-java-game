@@ -71,6 +71,12 @@ public class Shop implements Helper{
 			whichItem = s.nextLine();
 			if(whichItem.equals("EXIT")) return;
 			items = getDetail(whichItem);
+			if(items != null && currPlayer.getMoney() < items.getPrice()) {
+				System.out.println(c.RED + "Not enough item to buy !. GET AWAY FROM HERE !!" + c.RESET);
+				f.sleeping(1000);
+				f.enter(true);
+				return;
+			}
 			if(items != null) {
 				switch(currChoice) {
 				case 1:
@@ -85,6 +91,11 @@ public class Shop implements Helper{
 					currSpell.add((Spell) items);
 					break;
 				}
+				
+				currPlayer.setMoney(currPlayer.getMoney() - items.getPrice());
+				System.out.println(c.BRIGHT_GREEN + "Successfully bought " + items.getName() + c.RESET);
+				f.sleeping(1000);
+				f.enter(true);
 			}
 		} while (whichItem.length() < 1 || items == null);
 		

@@ -8,6 +8,8 @@ import item.Spell;
 
 public class Player implements Helper, Outputs{
 	private int damage, mana, health, money;
+	private String email, password;
+	
 	public Player(int damage, int mana, int health, int money) {
 		super();
 		this.damage = damage;
@@ -16,6 +18,22 @@ public class Player implements Helper, Outputs{
 		this.money = money;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public int getDamage() {
 		return damage;
 	}
@@ -98,6 +116,7 @@ public class Player implements Helper, Outputs{
 					return 0;
 				}
 				System.out.println(c.BRIGHT_GREEN + "You Spell-ed with " + o.getName() + " with damage " + o.getDamage() + c.RESET);
+				o.setUseLeft(o.getUseLeft() + 1);
 				System.out.println(c.BRIGHT_BLUE + "Cost " + o.getMana() + " Mana" + c.RESET);
 				o.setUseLeft(o.getUseLeft() - 1);
 				currPlayer.setMana(currPlayer.getMana() - o.getMana());
@@ -129,8 +148,6 @@ public class Player implements Helper, Outputs{
 			String choose;
 			System.out.print(c.BLUE + "Choose item's ID > " + c.RESET);
 			choose = s.nextLine();
-			
-			
 			
 			return getDamage() + getDamageItem(choose);
 		case 3:
@@ -206,8 +223,6 @@ public class Player implements Helper, Outputs{
 		System.out.print(c.BLUE + "Choose item's ID [wont use item -> 'NO'] > " + c.RESET);
 		if(choose.equals("NO")) return 0;
 		choose = s.nextLine();
-		
-		//get Armor
 		
 		for (Defensive d : currDefensive) {
 			if(d.getId().equals(choose)) {
