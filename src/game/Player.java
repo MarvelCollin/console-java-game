@@ -215,7 +215,9 @@ public class Player implements Helper, Outputs{
 				int deflect = d.getDeflect();
 				String name = d.getName();
 				if(d.getUseLeft() == 1) {
+					System.out.println();
 					System.out.println(c.RED + "This armor gonna be your last !" + c.RESET);
+					System.out.println();
 					currDefensive.remove(d);
 				}
 				
