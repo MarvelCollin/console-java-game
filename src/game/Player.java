@@ -63,8 +63,24 @@ public class Player implements Helper, Outputs{
 	}
 
 	
-	public int getDamageItem() {
-		return 10;
+	public int getDamageItem(String id) {
+		for (Offensive o : currOffensive) {
+			if(o.getId().equals(id)) {
+				System.out.println(c.BRIGHT_GREEN + "You attacked with " + o.getName() + " with damage " + o.getDamage() + c.RESET);
+				o.setUseLeft(o.getUseLeft() - 1);
+				return o.getDamage();
+			}
+		}
+		
+		for (Spell o : currSpell) {
+			if(o.getId().equals(id)) {
+				System.out.println(c.BRIGHT_GREEN + "You attacked with " + o.getName() + " with damage " + o.getDamage() + c.RESET);
+				o.setUseLeft(o.getUseLeft() - 1);
+				return o.getDamage();
+			}
+		}
+		System.out.println(c.RED + "You failed to grab your weapon !" + c.RESET);
+		return 0;
 	}
 	
 	public int menuAttack() {
@@ -82,8 +98,16 @@ public class Player implements Helper, Outputs{
 			System.out.println(c.BRIGHT_GREEN + "User attack with Base Damage > " + getDamage() + c.RESET);
 			return getDamage();
 		case 2:
-			System.out.println(c.BRIGHT_GREEN + "User attack with item > " + (getDamage() + getDamageItem()) + c.RESET);
-			return getDamage() + getDamageItem();
+			currPlayer.displayOffensive();
+			currPlayer.displaySpell();
+			
+			String choose;
+			System.out.print(c.BLUE + "Choose item's ID > " + c.RESET);
+			choose = s.nextLine();
+			
+			
+			
+			return getDamage() + getDamageItem(choose);
 		case 3:
 			System.out.println(c.BRIGHT_BLUE + "Storing 10 mana" + c.RESET);
 			return -10;
@@ -95,6 +119,7 @@ public class Player implements Helper, Outputs{
 		return getDamage();
 	}
 
+
 	public void setAll(int damage, int mana, int health, int money) {
 		this.damage = damage;
 		this.mana = mana;
@@ -102,40 +127,51 @@ public class Player implements Helper, Outputs{
 		this.money = money;
 	}
 	
+	
+	public void displayDefensive() {
+		System.out.println("----------------------------------------------------------------------------------------");
+		System.out.printf("| %-9s | %-18s | %-10s | %-6s | %-6s | %-8s | %-8s |%n", "ID", "NAME", "TYPE", "PRICE", "DEFLECT", "MAX USE", "USE LEFT");
+		System.out.println("----------------------------------------------------------------------------------------");
+		
+		for (Defensive d : currDefensive) {
+			System.out.printf("| %-9s | %-18s | %-10s | $%-5s | %-6s  | %-8s | %-8s |%n", d.getId(),d.getName(), d.getType(), d.getPrice(), d.getDeflect(), d.getMaxUse(), d.getUseLeft());
+		}
+		
+		System.out.println("----------------------------------------------------------------------------------------");
+	}
+
+	public void displayOffensive() {
+		System.out.println("---------------------------------------------------------------------------------------");
+		System.out.printf("| %-9s | %-18s | %-10s | %-6s | %-6s | %-8s | %-8s |%n", "ID", "NAME", "TYPE", "PRICE", "DAMAGE", "MAX USE", "USE LEFT");
+		System.out.println("---------------------------------------------------------------------------------------");
+		
+		for (Offensive d : currOffensive) {
+			System.out.printf("| %-9s | %-18s | %-10s | $%-5s | %-6s | %-8s | %-8s |%n", d.getId(),d.getName(), d.getType(), d.getPrice(), d.getDamage(), d.getMaxUse(), d.getUseLeft());
+		}
+		
+		System.out.println("---------------------------------------------------------------------------------------");
+	}
+	
+	public void displaySpell() {
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.printf("| %-9s | %-18s | %-10s | %-6s | %-6s | %-8s |%n", "ID", "NAME", "TYPE", "PRICE", "DAMAGE", "MANA");
+		System.out.println("----------------------------------------------------------------------------");
+		
+		for (Spell d : currSpell) {
+			System.out.printf("| %-9s | %-18s | %-10s | $%-5s | %-6s | %-8s |%n", d.getId(),d.getName(), d.getType(), d.getPrice(), d.getDamage(), d.getMana());
+		}
+		
+		System.out.println("----------------------------------------------------------------------------");
+	}
+	
 	public void displayCurr() {
 		System.out.println(c.BLUE + itemsO + c.RESET);
-        System.out.println("----------------------------------------------------------------------------------------");
-        System.out.printf("| %-9s | %-18s | %-10s | %-6s | %-6s | %-8s | %-8s |%n", "ID", "NAME", "TYPE", "PRICE", "DEFLECT", "MAX USE", "USE LEFT");
-        System.out.println("----------------------------------------------------------------------------------------");
-		
-        for (Defensive d : currDefensive) {
-        	System.out.printf("| %-9s | %-18s | %-10s | $%-5s | %-6s  | %-8s | %-8s |%n", d.getId(),d.getName(), d.getType(), d.getPrice(), d.getDeflect(), d.getMaxUse(), d.getUseLeft());
-		}
-        System.out.println("----------------------------------------------------------------------------------------");
-        
-        System.out.println();
-        
-        System.out.println("---------------------------------------------------------------------------------------");
-        System.out.printf("| %-9s | %-18s | %-10s | %-6s | %-6s | %-8s | %-8s |%n", "ID", "NAME", "TYPE", "PRICE", "DAMAGE", "MAX USE", "USE LEFT");
-        System.out.println("---------------------------------------------------------------------------------------");
-        
-        for (Offensive d : currOffensive) {
-        	System.out.printf("| %-9s | %-18s | %-10s | $%-5s | %-6s | %-8s | %-8s |%n", d.getId(),d.getName(), d.getType(), d.getPrice(), d.getDamage(), d.getMaxUse(), d.getUseLeft());
-        }
-        System.out.println("---------------------------------------------------------------------------------------");
-        
-        System.out.println();
-        
-        System.out.println("----------------------------------------------------------------------------");
-        System.out.printf("| %-9s | %-18s | %-10s | %-6s | %-6s | %-8s |%n", "ID", "NAME", "TYPE", "PRICE", "DAMAGE", "MANA");
-        System.out.println("----------------------------------------------------------------------------");
-        
-        for (Spell d : currSpell) {
-        	System.out.printf("| %-9s | %-18s | %-10s | $%-5s | %-6s | %-8s |%n", d.getId(),d.getName(), d.getType(), d.getPrice(), d.getDamage(), d.getMana());
-        }
-        
-        System.out.println("----------------------------------------------------------------------------");
-        f.enter(true);
+		displayDefensive();
+		System.out.println();
+		displayOffensive();
+		System.out.println();
+		displaySpell();
+		f.enter(true);
 	}
 	
 }

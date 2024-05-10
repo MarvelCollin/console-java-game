@@ -18,7 +18,6 @@ import monster.Strength;
 import parent.Monster;
 
 public class Battle implements Helper, Outputs{
-	
 	int turns;
 	String fileMonster = "monster.txt";
 	String monsterName, type;
@@ -103,7 +102,7 @@ public class Battle implements Helper, Outputs{
 		player.printStats();
 		
 		int damage = player.menuAttack();
-		
+		System.out.println(c.RED + "Attacking with total " + damage + c.RESET);
 		if(damage < 0) {
 			player.setMana(player.getMana() + 10);
 		} else {

@@ -19,6 +19,7 @@ import parent.Item;
 public class Shop implements Helper{
 	public void menu() {
 //		init();
+		int currChoice = 0;
 		f.clr();
 		String shopAscii = "  _________.__                       _____                       \r\n"
 				+ " /   _____/|  |__   ____ ______     /     \\   ____   ____  __ __ \r\n"
@@ -42,12 +43,15 @@ public class Shop implements Helper{
 			switch(choice) {
 			case 1: 
 				printList("Offensive");
+				currChoice = 1;
 				break;
 			case 2: 
 				printList("Defensive");
+				currChoice = 2;
 				break;
 			case 3:
 				printList("Spell");
+				currChoice = 3;
 				break;
 			case 4:
 				break;
@@ -61,6 +65,21 @@ public class Shop implements Helper{
 			whichItem = s.nextLine();
 			if(whichItem.equals("EXIT")) return;
 			items = getDetail(whichItem);
+			if(items != null) {
+				switch(currChoice) {
+				case 1:
+					currOffensive.add((Offensive) items);
+					currOffensive.get(currOffensive.size() - 1).setUseLeft(currOffensive.get(currOffensive.size() - 1).getMaxUse());
+					break;
+				case 2:
+					currDefensive.add((Defensive) items);
+					currDefensive.get(currDefensive.size() - 1).setUseLeft(currDefensive.get(currDefensive.size() - 1).getMaxUse());
+					break;
+				case 3:
+					currSpell.add((Spell) items);
+					break;
+				}
+			}
 		} while (whichItem.length() < 1 || items == null);
 		
 	}
@@ -85,8 +104,6 @@ public class Shop implements Helper{
 		}
 		
 		return null;
-		
-		
 	}
 	
 	void printList(String header) {
