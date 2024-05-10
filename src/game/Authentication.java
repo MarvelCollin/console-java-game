@@ -16,8 +16,8 @@ public class Authentication implements Helper, Outputs{
 	public Authentication() {
 //		welcome();
 		currPlayer.setAll(30, 30, 300, 80);
-//		authMenu();
-		menu.game();
+		authMenu();
+//		menu.game();
 	}
 
 	public void welcome() {

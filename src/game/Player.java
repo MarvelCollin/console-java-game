@@ -1,8 +1,12 @@
 package game;
 
 import helper.Helper;
+import helper.Outputs;
+import item.Defensive;
+import item.Offensive;
+import item.Spell;
 
-public class Player implements Helper{
+public class Player implements Helper, Outputs{
 	private int damage, mana, health, money;
 	public Player(int damage, int mana, int health, int money) {
 		super();
@@ -98,8 +102,40 @@ public class Player implements Helper{
 		this.money = money;
 	}
 	
-	public void currItems() {
+	public void displayCurr() {
+		System.out.println(c.BLUE + itemsO + c.RESET);
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.printf("| %-9s | %-18s | %-10s | %-6s | %-6s | %-8s | %-8s |%n", "ID", "NAME", "TYPE", "PRICE", "DEFLECT", "MAX USE", "USE LEFT");
+        System.out.println("----------------------------------------------------------------------------------------");
 		
+        for (Defensive d : currDefensive) {
+        	System.out.printf("| %-9s | %-18s | %-10s | $%-5s | %-6s  | %-8s | %-8s |%n", d.getId(),d.getName(), d.getType(), d.getPrice(), d.getDeflect(), d.getMaxUse(), d.getUseLeft());
+		}
+        System.out.println("----------------------------------------------------------------------------------------");
+        
+        System.out.println();
+        
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.printf("| %-9s | %-18s | %-10s | %-6s | %-6s | %-8s | %-8s |%n", "ID", "NAME", "TYPE", "PRICE", "DAMAGE", "MAX USE", "USE LEFT");
+        System.out.println("---------------------------------------------------------------------------------------");
+        
+        for (Offensive d : currOffensive) {
+        	System.out.printf("| %-9s | %-18s | %-10s | $%-5s | %-6s | %-8s | %-8s |%n", d.getId(),d.getName(), d.getType(), d.getPrice(), d.getDamage(), d.getMaxUse(), d.getUseLeft());
+        }
+        System.out.println("---------------------------------------------------------------------------------------");
+        
+        System.out.println();
+        
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.printf("| %-9s | %-18s | %-10s | %-6s | %-6s | %-8s |%n", "ID", "NAME", "TYPE", "PRICE", "DAMAGE", "MANA");
+        System.out.println("----------------------------------------------------------------------------");
+        
+        for (Spell d : currSpell) {
+        	System.out.printf("| %-9s | %-18s | %-10s | $%-5s | %-6s | %-8s |%n", d.getId(),d.getName(), d.getType(), d.getPrice(), d.getDamage(), d.getMana());
+        }
+        
+        System.out.println("----------------------------------------------------------------------------");
+        f.enter(true);
 	}
 	
 }

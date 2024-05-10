@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import helper.Helper;
+import helper.Outputs;
 import item.Defensive;
 import item.Offensive;
 import item.Spell;
 
-public class UserHandler implements Helper{
+public class UserHandler implements Helper, Outputs{
 	
 	public boolean loginChecker(String emailInput, String passwordInput) {
         String filePath = "credential.txt";
@@ -20,12 +21,6 @@ public class UserHandler implements Helper{
         int money = 0;
         int health = 0;
         int mana = 0;
-        String offensive = "";
-        int usedOff = 0;
-        String armor = "";
-        int usedArmor = 0;
-        String spell = "";
-        int usedSpell = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -41,10 +36,13 @@ public class UserHandler implements Helper{
                 health = f.StringDoubleToInt(parts[3]);
                 mana = f.StringDoubleToInt(parts[4]);
                 
+//                System.out.println(parts[5]);
+                
                 String[] items = parts[5].split("-");
                 gettingItems(items);
                 
                 currPlayer.setAll(30, mana, health, money);
+                
                 return true;
             }
             
@@ -56,46 +54,36 @@ public class UserHandler implements Helper{
 	
 	public void gettingItems(String[] str) {
 		for(int i = 0; i < str.length; i++) {
+//			System.out.println(str[i]);
 			String[] div = str[i].split("@");
 			
 			for (Offensive o : offensiveShop) {
 				if(o.getId().equals(div[0])) {
 					currOffensive.add(o);
-					currOffensive.get(currOffensive.size() - 1).setUseLeft(f.StringToInt(div[2]));
+					Offensive last = currOffensive.get(currOffensive.size() - 1);
+					last.setUseLeft(last.getMaxUse() - f.StringToInt(div[1]));
 					break;
 				}
 			}
 			
 			for (Defensive d : defensiveShop) {
 				if(d.getId().equals(div[0])) {
-					defensiveShop.add(d);
-					defensiveShop.get(defensiveShop.size() - 1).setUseLeft(f.StringToInt(div[2]));
+					currDefensive.add(d);
+					Defensive last = currDefensive.get(currDefensive.size() - 1);
+					last.setUseLeft(last.getMaxUse() - f.StringToInt(div[1]));
 					break;
 				}
 			}
 			
 			for (Spell s : spellShop) {
 				if(s.getId().equals(div[0])) {
-					spellShop.add(s);
-					spellShop.get(spellShop.size() - 1).setUseLeft(f.StringToInt(div[2]));
+					currSpell.add(s);
 					break;
 				}
 			}
 		}
 	}
 	
-	void displayCurr() {
-//        System.out.println("Email: " + email);
-//        System.out.println("Password: " + password);
-//        System.out.println("Money: " + money);
-//        System.out.println("Health: " + health);
-//        System.out.println("Mana: " + mana);
-//        System.out.println("Offensive: " + offensive);
-//        System.out.println("Used Offensive: " + usedOff);
-//        System.out.println("Armor: " + armor);
-//        System.out.println("Used Armor: " + usedArmor);
-//        System.out.println("Spell: " + spell);
-//        System.out.println("Used Spell: " + usedSpell);
-	}
+
 
 }

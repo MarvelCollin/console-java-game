@@ -37,7 +37,7 @@ public class Map implements Helper {
 	//				if(map[y][x] == target[i]) return false;
 	//			}
 			
-			if(map[y][x] != ' ' && map[y][x] != '#') return false;
+			if(map[y][x] != ' ') return false;
 			
 			return true;
 		}
@@ -98,7 +98,7 @@ public class Map implements Helper {
 		public void initMap() {
 			for(int i = 0; i < heightSize; i++) {
 				for(int j = 0; j < widthSize; j++) {
-					if(i == heightSize - 1 || j == widthSize - 1 || i == 0 || j == 0) {
+					if(i == heightSize - 10 || j == widthSize - 10 || i == 10 || j == 10) {
 						map[i][j] = '#';
 					} else {
 						map[i][j] = ' ';

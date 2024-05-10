@@ -4,16 +4,13 @@ import java.util.Random;
 
 import helper.Color;
 import helper.Function;
+import helper.Helper;
 
-public abstract class Monster {
+public abstract class Monster implements Helper{
 	protected String name;
 	protected int damage;
 	protected int health;
 	protected String type;
-	
-	protected Function f = new Function();
-	protected Color c = new Color();
-	protected Random r = new Random();
 	
 	public Monster(String name) {
 		super();
