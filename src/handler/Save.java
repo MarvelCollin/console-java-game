@@ -73,6 +73,22 @@ public class Save implements Helper, Setting{
 	void saveMap(int y, int x) {
 		String relativePath = "src/mapData/";
         String fileName = currPlayer.getEmail();
+        
+		 File directory = new File(relativePath);
+
+		 File[] files = directory.listFiles();
+
+		 if (files != null && files.length > 0) {
+			 for (File file : files) {
+				 if (file.isFile()) {
+					 String[] get = file.getName().split("#");
+					 
+					 if(get[0].equals(currPlayer.getEmail())) {
+						 file.delete();
+					 }
+				 }
+			 }
+		 }
 
         String filePath = relativePath + fileName + "#" + y + "#" + x + ".txt";
 

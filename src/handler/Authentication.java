@@ -116,6 +116,9 @@ public class Authentication implements Helper, Outputs{
 			System.out.println(c.BRIGHT_GREEN + success + c.RESET);
 			System.out.println();
 			f.sleeping(2000);
+            System.out.println(c.GREEN + "Getting user data...." + c.RESET);
+            f.sleeping(1000);
+			new Load();
 			menu.game();
 			return;
 		} else {

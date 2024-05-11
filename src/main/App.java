@@ -6,6 +6,7 @@ import javax.sound.sampled.AudioFileFormat;
 
 import game.Player;
 import handler.Authentication;
+import handler.Load;
 import handler.Save;
 import handler.UserHandler;
 import helper.Helper;
@@ -15,6 +16,11 @@ public class App implements Helper{
 	int xPlayer = map.getWidthSize() / 2;
 	int yPlayer = map.getHeightSize() / 2;
 	String outputMessage= "";
+	
+	public void initPlayer(int yPlayer, int xPlayer) {
+		this.xPlayer = xPlayer;
+		this.yPlayer = yPlayer;
+	}
 	
 	public void move() {
 		f.clr();
@@ -109,7 +115,6 @@ public class App implements Helper{
 	
 	void init() {
 		shop.init();
-		map.initMap();
 		new Authentication();
 	}
 	

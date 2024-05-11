@@ -41,7 +41,7 @@ public class UserHandler implements Helper, Outputs{
                 gettingItems(items);
                 
                 currPlayer.setAll(30, mana, health, money);
-                
+
                 return true;
             }
             

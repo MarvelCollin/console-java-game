@@ -103,12 +103,12 @@ public class Map implements Helper {
 				}
 			}
 			
-			for(int i = 0; i < 400; i++) {
+			for(int i = 0; i < 480; i++) {
 				generate('v');
 				generate('#');
 			}
 			
-			for (int i = 0; i < 200; i++) {
+			for (int i = 0; i < 2250; i++) {
 				generate('O');
 			}
 		}

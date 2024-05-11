@@ -1,5 +1,6 @@
 package helper;
 
+import handler.Load;
 import handler.Save;
 import prettifier.Outputs;
 public class Menus implements Helper, Outputs{
