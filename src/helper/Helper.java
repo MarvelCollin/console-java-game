@@ -31,6 +31,9 @@ public interface Helper {
 	Random r = new Random();
 	UserHandler userHandler = new UserHandler();
 	Shop shop = new Shop();
+	int widthSize = 370;
+	int heightSize = 370;
+	char[][] mapChar = new char[heightSize][widthSize];
 	
 	ArrayList<Defensive> currDefensive = new ArrayList<Defensive>();
 	ArrayList<Offensive> currOffensive = new ArrayList<Offensive>();

@@ -3,9 +3,6 @@
 import helper.Helper;
 
 public class Map implements Helper {
-		private int widthSize = 370;
-		private int heightSize = 370;
-		private char[][] map = new char[heightSize][widthSize];
 		private int xRadius = 3;
 		private int yRadius = 3;
 		private int xBorder = 6, yBorder = 6;
@@ -25,7 +22,7 @@ public class Map implements Helper {
 		}
 		
 		public boolean isPreMoveEmpty(int y, int x) {
-			if(map[y][x] == ' ') return true;
+			if(mapChar[y][x] == ' ') return true;
 		
 			return false;
 		}
@@ -37,7 +34,7 @@ public class Map implements Helper {
 	//				if(map[y][x] == target[i]) return false;
 	//			}
 			
-			if(map[y][x] != ' ') return false;
+			if(mapChar[y][x] != ' ') return false;
 			
 			return true;
 		}
@@ -73,7 +70,7 @@ public class Map implements Helper {
 
 		    if (value == 'O') {
 		        if (isEmpty(yRand, xRand) && chanceChar(10)) {
-		            map[yRand][xRand] = 'O';
+		        	mapChar[yRand][xRand] = 'O';
 		        }
 		        return;
 		    }
@@ -88,7 +85,7 @@ public class Map implements Helper {
 		                    value = 'V';
 		                    bigGrass = true;
 		                }
-		                map[i + yRand][j + xRand] = value;
+		                mapChar[i + yRand][j + xRand] = value;
 		                if (value == 'V') value = 'v';
 		            }
 		        }
@@ -99,9 +96,9 @@ public class Map implements Helper {
 			for(int i = 0; i < heightSize; i++) {
 				for(int j = 0; j < widthSize; j++) {
 					if(i == heightSize - 10 || j == widthSize - 10 || i == 10 || j == 10) {
-						map[i][j] = '#';
+						mapChar[i][j] = '#';
 					} else {
-						map[i][j] = ' ';
+						mapChar[i][j] = ' ';
 					}
 				}
 			}
@@ -123,7 +120,7 @@ public class Map implements Helper {
 						System.out.print("#");
 					} 
 					else {
-						System.out.print(map[i][j]);
+						System.out.print(mapChar[i][j]);
 					}
 				}
 				System.out.println();
@@ -147,7 +144,7 @@ public class Map implements Helper {
 						System.out.print("-");
 //						System.out.print(c.BRIGHT_RED + "-" + c.RESET);
 					} else {
-						System.out.print(map[y + i][x + j]);
+						System.out.print(mapChar[y + i][x + j]);
 					}
 				}
 				System.out.println();
@@ -157,23 +154,23 @@ public class Map implements Helper {
 		}
 		
 		public void checker(int y, int x) {
-			if((map[y][x] == 'v' || map[y][x] == 'V') && chanceChar(30)) {
+			if((mapChar[y][x] == 'v' || mapChar[y][x] == 'V') && chanceChar(30)) {
 			battle.init(currPlayer);
 			f.clr();
 			battle.menuBattle();
 			setValue(' ', y, x);
 			
-			} else if(map[y][x] == 'O') {
+			} else if(mapChar[y][x] == 'O') {
 				currPlayer.setHealth(currPlayer.getMoney() + 5);
 			}
 		}
 
 		public void setValue(char v, int y, int x) {
-			map[y][x] = v;
+			mapChar[y][x] = v;
 		}
 		
 		public char getValue(int y, int x) {
-			return map[y][x];
+			return mapChar[y][x];
 		}
 		
 		public int getWidthSize() {

@@ -1,5 +1,6 @@
 package handler;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -67,6 +68,32 @@ public class Save implements Helper, Setting{
 		}
 		System.out.println(c.BRIGHT_GREEN + "Saving Current User Data..." + c.RESET);
 		f.enter(true);
+	}
+	
+	void saveMap() {
+		 String filePath = currPlayer.getEmail();
+
+	        try {
+	            File file = new File(filePath);
+
+	            if (file.exists()) {
+	            	return;
+	            } else {
+	                FileWriter writer = new FileWriter(file);
+	                
+	                for (int i = 0; i < ; i++) {
+						
+					}
+	                writer.write("Hello, this is a new file!");
+
+	                writer.close();
+
+	                System.out.println("File created successfully.");
+	            }
+	        } catch (IOException e) {
+	            System.out.println("An error occurred.");
+	            e.printStackTrace();
+	        }
 	}
 	
 }
