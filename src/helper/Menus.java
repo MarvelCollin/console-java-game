@@ -42,10 +42,10 @@ public class Menus implements Helper, Outputs{
 		System.out.println();
 		
 		System.out.println(c.GREEN + "Cheat Code" +c.RESET);
-		System.out.println("kolinganteng    > add 1000 coin");
+		System.out.println("kolinngemeng    > add 1000 coin");
 		System.out.println("marcobotak    > full HP");
-		System.out.println("pantatvincent    > full mana");
-		System.out.println("stiphengabisaberakjongkok   > random teleport");
+		System.out.println("vincentzigzag    > full mana");
+		System.out.println("stiphentapiardi   > random teleport");
 
 		f.enter(true);
 		game();

@@ -60,19 +60,23 @@ public class App implements Helper{
 			currPlayer.displayCurr();
 		} else if(input.equals("k") || input.equals("K")) {
 			new Save(yPlayer, xPlayer);
-		} else if(input.equals("kolinganteng")) {
+		} else if(input.equals("kolinngemeng")) {
+			outputMessage = "Activated 'kolinngemeng' cheat code, add 1000 coins";
 			currPlayer.setMoney(currPlayer.getMoney() + 1000);
 		} else if(input.equals("marcobotak")) {
 			currPlayer.setHealth(300);
-		} else if(input.equals("pantatvincent")) {
+			outputMessage = "Activated 'marcobotak' cheat code, set Health full";
+		} else if(input.equals("vincentzigzag")) {
 			currPlayer.setMana(30);
+			outputMessage = "Activated 'vincentzigzag' cheat code, set Mana full";
 		} else if(input.equals("e")) {
 			new Save(yPlayer, xPlayer);
 			
 			System.out.println(c.RED + "Exiting program...." + c.RESET);
 			System.exit(0);
 			return;
-		} else if(input.equals("stiphengabisaberakjongkok")) {
+		} else if(input.equals("stiphentapiardi")) {
+			outputMessage = "Activated 'stiphentapiardi' cheat code, random teleporting !";
 			yPlayer = r.nextInt(200) + 100;
 			xPlayer = r.nextInt(200) + 100;
 		} else {
