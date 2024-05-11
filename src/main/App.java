@@ -4,8 +4,9 @@ import java.awt.Menu;
 
 import javax.sound.sampled.AudioFileFormat;
 
-import game.Authentication;
 import game.Player;
+import handler.Authentication;
+import handler.Save;
 import handler.UserHandler;
 import helper.Helper;
 import scene.Shop;
@@ -51,6 +52,8 @@ public class App implements Helper{
 		} else if(input.equals("i") || input.equals("I")) {
 			f.clr();
 			currPlayer.displayCurr();
+		} else if(input.equals("k") || input.equals("K")) {
+			new Save();
 		} else {
 			move();
 			return;

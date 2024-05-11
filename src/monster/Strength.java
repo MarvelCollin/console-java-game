@@ -1,7 +1,9 @@
 package monster;
 
-import helper.Color;
+import java.util.Random;
+
 import parent.Monster;
+import prettifier.Color;
 
 public class Strength extends Monster{
 	int armor;
@@ -10,6 +12,7 @@ public class Strength extends Monster{
 		damage = initDamage();
 		health = initHealth();
 		type = "Strength";
+		armor = initArmor();
 	}
 
 	public int initArmor() {
@@ -30,15 +33,25 @@ public class Strength extends Monster{
 		return f.random(20, 30);
 	}
 
-	@Override
-	public int receiveDamage() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public int initHealth() {
 		return f.random(200, 210) - getDamage();
+	}
+
+	@Override
+	public int receivedDamage(int damage) {
+		int damageDeflected = damage - this.armor;
+		Random r = new Random();
+		
+		int random = r.nextInt(3);
+		if(random == 3) return damage;
+		if(random == 2) return 0;
+		
+		if(damageDeflected < 0) return 0;
+		
+		setHealth(getHealth() - damageDeflected);
+		return damageDeflected;
 	}
 
 

@@ -1,10 +1,10 @@
 package game;
 
 import helper.Helper;
-import helper.Outputs;
 import item.Defensive;
 import item.Offensive;
 import item.Spell;
+import prettifier.Outputs;
 
 public class Player implements Helper, Outputs{
 	private int damage, mana, health, money;
@@ -116,7 +116,6 @@ public class Player implements Helper, Outputs{
 					return 0;
 				}
 				System.out.println(c.BRIGHT_GREEN + "You Spell-ed with " + o.getName() + " with damage " + o.getDamage() + c.RESET);
-				o.setUseLeft(o.getUseLeft() + 1);
 				System.out.println(c.BRIGHT_BLUE + "Cost " + o.getMana() + " Mana" + c.RESET);
 				o.setUseLeft(o.getUseLeft() - 1);
 				currPlayer.setMana(currPlayer.getMana() - o.getMana());
@@ -221,8 +220,11 @@ public class Player implements Helper, Outputs{
 		
 		String choose = "";
 		System.out.print(c.BLUE + "Choose item's ID [wont use item -> 'NO'] > " + c.RESET);
-		if(choose.equals("NO")) return 0;
 		choose = s.nextLine();
+		if(choose.equals("NO")) {
+			System.out.println(c.BRIGHT_BLUE + "Not wearing any armor.. " + c.RESET);
+			return 0;
+		}
 		
 		for (Defensive d : currDefensive) {
 			if(d.getId().equals(choose)) {

@@ -1,4 +1,4 @@
-package game;
+package handler;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import helper.Helper;
-import helper.Outputs;
+import prettifier.Outputs;
 
 public class Authentication implements Helper, Outputs{
 

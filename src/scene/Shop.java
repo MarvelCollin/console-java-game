@@ -7,35 +7,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import helper.Helper;
+import helper.Menus;
+import helper.Setting;
 import item.Defensive;
 import item.Offensive;
 import item.Spell;
-import main.Menus;
 import monster.Agility;
 import monster.Intelligence;
 import monster.Strength;
 import parent.Item;
+import prettifier.Outputs;
 
-public class Shop implements Helper{
+public class Shop implements Helper, Outputs, Setting{
 	public void menu() {
-//		init();
 		int currChoice = 0;
 		f.clr();
-		String shopAscii = "  _________.__                       _____                       \r\n"
-				+ " /   _____/|  |__   ____ ______     /     \\   ____   ____  __ __ \r\n"
-				+ " \\_____  \\ |  |  \\ /  _ \\\\____ \\   /  \\ /  \\_/ __ \\ /    \\|  |  \\\r\n"
-				+ " /        \\|   Y  (  <_> )  |_> > /    Y    \\  ___/|   |  \\  |  /\r\n"
-				+ "/_______  /|___|  /\\____/|   __/  \\____|__  /\\___  >___|  /____/ \r\n"
-				+ "        \\/      \\/       |__|             \\/     \\/     \\/       ";
-		
 		int choice = 0;
 		
-		System.out.println(c.CYAN + shopAscii + c.RESET);
+		System.out.println(c.CYAN + shopOutput + c.RESET);
 		
 		System.out.println("1. Buy Offensive Item");
 		System.out.println("2. Buy Defensive Item");
 		System.out.println("3. Buy Spells Item");
-		System.out.println("4. Restore 50 Health -> 30 coins");
+		System.out.println("4. Restore 50 Health for 30 coins");
 		System.out.println("5. Exit");
 		do {
 			System.out.print(">> ");
@@ -197,6 +191,6 @@ public class Shop implements Helper{
 		offensiveShop.removeAll(offensiveShop);
 		spellShop.removeAll(spellShop);
 		
-		readFile("item.txt");
+		readFile(itemTxt);
 	}
 }

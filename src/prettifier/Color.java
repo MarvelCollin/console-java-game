@@ -1,4 +1,4 @@
-package helper;
+package prettifier;
 
 public class Color {
     public static final String RESET = "\u001B[0m";

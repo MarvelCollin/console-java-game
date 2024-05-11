@@ -8,15 +8,15 @@ import java.util.List;
 import java.util.Random;
 
 import game.Player;
-import helper.Color;
+import handler.Save;
 import helper.Function;
 import helper.Helper;
-import helper.Outputs;
-import helper.Save;
 import monster.Agility;
 import monster.Intelligence;
 import monster.Strength;
 import parent.Monster;
+import prettifier.Color;
+import prettifier.Outputs;
 
 public class Battle implements Helper, Outputs{
 	int turns;
@@ -114,7 +114,11 @@ public class Battle implements Helper, Outputs{
 		if(damage < 0) {
 			player.setMana(player.getMana() + 10);
 		} else {
-			monster.setHealth(monster.getHealth() - damage);
+			int totalDamage = monster.receivedDamage(damage);
+			if(monster.getType().equals("Strength")) System.out.println(c.RED + monster.getName() + " is a Strength hero, has a armor to deflect damage !" + c.RESET);
+			
+			if(totalDamage == 0) System.out.println(c.BRIGHT_RED + "Damage received " + totalDamage + c.RESET);
+			//			monster.setHealth(monster.getHealth() - damage);
 		}
 		
 		f.enter(true);

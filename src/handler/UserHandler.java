@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import helper.Helper;
-import helper.Outputs;
 import item.Defensive;
 import item.Offensive;
 import item.Spell;
+import prettifier.Outputs;
 
 public class UserHandler implements Helper, Outputs{
 	public boolean loginChecker(String emailInput, String passwordInput) {

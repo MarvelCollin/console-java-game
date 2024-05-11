@@ -33,12 +33,6 @@ public class Agility extends Monster{
 	}
 
 	@Override
-	public int receiveDamage() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public int initHealth() {
 		return f.random(100, 120) - getDamage();
 	}
@@ -47,6 +41,12 @@ public class Agility extends Monster{
 	public int initArmor() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int receivedDamage(int damage) {
+		setHealth(getHealth() - damage); 
+		return damage;
 	}
 
 

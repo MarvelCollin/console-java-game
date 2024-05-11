@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 import game.Map;
 import game.Player;
-import helper.Color;
 import helper.Helper;
+import prettifier.Color;
 import scene.Battle;
 
 public class Main implements Helper{

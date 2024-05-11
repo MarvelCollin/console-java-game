@@ -1,8 +1,7 @@
-package main;
+package helper;
 
-import helper.Helper;
-import helper.Outputs;
-import helper.Save;
+import handler.Save;
+import prettifier.Outputs;
 public class Menus implements Helper, Outputs{
 	public Menus() {
 	}

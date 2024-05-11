@@ -2,9 +2,9 @@ package parent;
 
 import java.util.Random;
 
-import helper.Color;
 import helper.Function;
 import helper.Helper;
+import prettifier.Color;
 
 public abstract class Monster implements Helper{
 	protected String name;
@@ -19,9 +19,9 @@ public abstract class Monster implements Helper{
 	
 	public abstract int attack();
 	public abstract int initDamage();
-	public abstract int receiveDamage();
 	public abstract int initHealth();
 	public abstract int initArmor();
+	public abstract int receivedDamage(int damage);
 
 	public int getDamage() {
 		return damage;
@@ -51,6 +51,7 @@ public abstract class Monster implements Helper{
 	public void setType(String name) {
 		this.type = type;
 	}
+	
 	
 	public void printStats() {
 	    System.out.println(c.RED);

@@ -13,7 +13,7 @@ import item.Defensive;
 import item.Offensive;
 import item.Spell;
 import main.App;
-import main.Menus;
+import prettifier.Color;
 import scene.Battle;
 import scene.Shop;
 
