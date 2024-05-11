@@ -16,8 +16,9 @@ import item.Spell;
 
 public class Save implements Helper, Setting{
 
-	public Save() {
+	public Save(int y, int x) {
 		saveUser();
+		saveMap(y,x);
 	}
 
 	void saveUser() {
@@ -51,7 +52,6 @@ public class Save implements Helper, Setting{
 			FileWriter fw = new FileWriter(userTxt);
 			
 			for (String line : lines) {
-				
 				if(v.getEmail(line).equals(currPlayer.getEmail())) {
 					line = finalStore;
 				}
@@ -70,8 +70,11 @@ public class Save implements Helper, Setting{
 		f.enter(true);
 	}
 	
-	void saveMap() {
-		 String filePath = currPlayer.getEmail();
+	void saveMap(int y, int x) {
+		String relativePath = "src/mapData/";
+        String fileName = currPlayer.getEmail();
+
+        String filePath = relativePath + fileName + "#" + y + "#" + x + ".txt";
 
 	        try {
 	            File file = new File(filePath);
@@ -81,14 +84,15 @@ public class Save implements Helper, Setting{
 	            } else {
 	                FileWriter writer = new FileWriter(file);
 	                
-	                for (int i = 0; i < ; i++) {
-						
+	                for (int i = 0; i < heightSize; i++) {
+						for (int j = 0; j < widthSize; j++) {
+							writer.write(mapChar[i][j]);
+						}
+						writer.write("\n");
 					}
-	                writer.write("Hello, this is a new file!");
 
 	                writer.close();
 
-	                System.out.println("File created successfully.");
 	            }
 	        } catch (IOException e) {
 	            System.out.println("An error occurred.");

@@ -53,7 +53,7 @@ public class App implements Helper{
 			f.clr();
 			currPlayer.displayCurr();
 		} else if(input.equals("k") || input.equals("K")) {
-			new Save();
+			new Save(yPlayer, xPlayer);
 		} else if(input.equals("kolinganteng")) {
 			currPlayer.setMoney(currPlayer.getMoney() + 1000);
 		} else if(input.equals("marcobotak")) {
@@ -61,7 +61,7 @@ public class App implements Helper{
 		} else if(input.equals("pantatvincent")) {
 			currPlayer.setMana(30);
 		} else if(input.equals("e")) {
-			new Save();
+			new Save(yPlayer, xPlayer);
 			
 			System.out.println(c.RED + "Exiting program...." + c.RESET);
 			System.exit(0);
